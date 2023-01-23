@@ -1,3 +1,9 @@
+---
+description: >-
+  RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network.
+layout: landing
+---
+
 # RGB smart contracts
 
 RGB is a scalable & confidential smart contracts system for Bitcoin & lightning network. It embraces concepts of private & mutual ownership and is a "post-blockchain", Turing-complete form of trustless distributed computing which does not require introduction of tokens.
