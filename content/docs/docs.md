@@ -1,5 +1,5 @@
 ---
-title = "RGB smart contracts docs"
+title: RGB smart contracts docs
 description: >-
   Documentation on RGB: scalable & confidential smart contracts system for Bitcoin &
   lightning network.
