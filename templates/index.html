@@ -6,14 +6,45 @@
     <title>RGB smart contracts</title>
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="front.css">
+    <link rel="stylesheet" href="tachyons-ext.css">
 </head>
 
 <body>
-<section class="section">
-    <div class="container">
-        {{ section.content | safe }}
+<nav class="flex flex-row justify-center justify-end-l items-center flex-wrap ph2 pl3-ns pr3-ns pb3">
+    <div class="brand flex-auto w-100 w-auto-l self-start tc tl-l">
+        <a href="/" class="brand">
+            <img class="v-mid ml0-l" alt="RGB Logo" src="rgb-logo-blk.svg">
+        </a>
     </div>
-</section>
+    <ul class="nav list w-100 w-auto-l flex flex-none flex-row flex-wrap justify-center justify-end-l items-center pv2 ph0 ph4-ns">
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Install</li>
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Learn</li>
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Tools</li>
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Governance</li>
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Community</li>
+        <li class="tc pv2 ph2 ph4-ns flex-20-s">Blog</li>
+    </ul>
+</nav>
+<main>
+    {%- for page in section.pages %}
+        {% if page.extra['header'] %}
+            <header class="{{page.extra['class']}}">
+                {{ page.content | safe }}
+            </header>
+        {% else %}
+            <section class="{{page.extra['color']}}">
+                <div class="{{page.extra['class']}}">
+                    <header class="pb0">
+                        <h2>{{ page.title }}</h2>
+                        <div class="highlight"></div>
+                    </header>
+
+                    {{ page.content | safe }}
+                </div>
+            </section>
+        {% endif %}
+    {% endfor -%}
+</main>
 </body>
 
 </html>

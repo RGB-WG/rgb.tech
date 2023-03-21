@@ -11,3 +11,31 @@
   font-size: 3rem
   font-weight: 300
   line-height: 1.25
+
+$green-bg: #0b7261
+$green-contrast: #2e2459
+
+$orange-bg: #2e2459
+$orange-contrast: #a72145
+
+.highlight
+  height: 12px
+  position: relative
+  top: 0
+  left: -10px
+  width: 120%
+  max-width: 90vw
+  line-height: 1.6
+  border-radius: 2px
+
+.even
+  background-color: $orange-bg
+  color: white
+  .highlight
+    background-color: $orange-contrast
+
+.odd
+  background-color: $green-bg
+  color: white
+  .highlight
+    background-color: $green-contrast
