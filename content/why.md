@@ -3,8 +3,6 @@ weight = 10
 title = "Why RGB?"
 [extra]
 header = false
-color = "even"
-class = "w-100 mw-none ph3 mw8-m mw9-l center"
 +++
 
 * ### Scalability

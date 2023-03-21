@@ -3,8 +3,6 @@ weight = 20
 title = "Build with RGB"
 [extra]
 header = false
-color = "odd"
-class = "w-100 mw-none ph3 mw8-m mw9-l center f3"
 +++
 
 RGB was designed to allow everything what is possible with blockchain-based 

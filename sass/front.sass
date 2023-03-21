@@ -1,10 +1,16 @@
 @import "_base"
 
-$green-bg: #0b7261
-$green-contrast: #2e2459
+$body-font: "Fira Sans", Helvetica, Arial, sans-serif
+$header-font: "Alfa Slab One", serif
 
-$orange-bg: #2e2459
-$orange-contrast: #a72145
+$gray: #2a3439
+$red: #a72145
+$green: #0b7261
+$purple: #2e2459
+$yellow: #ffc832
+$border-radius: 4px
+$link-color: #4299bf
+$footer-gray: $gray
 
 #title
   font-family: "Alfa Slab One", serif
@@ -65,14 +71,132 @@ header .button.button-download
   &:focus
     outline: 0
 
-.even
-  background-color: $orange-bg
-  color: white
-  .highlight
-    background-color: $orange-contrast
+.button.button-secondary
+  font-size: 0.8em
 
-.odd
-  background-color: $green-bg
+.button-additional
+  display: inline-block
+  text-align: center
+  width: 100%
+  font-size: 0.8em
+
+
+.section-red
+  background-color: $red
   color: white
+
   .highlight
-    background-color: $green-contrast
+    background-color: $purple
+
+  a
+    color: white
+    text-decoration: underline
+
+  .button.button-secondary
+    background-color: $purple
+    border-color: $purple
+    color: white
+    text-decoration: none
+    &:hover,
+    &:focus
+      border-color: white
+
+
+.section-green
+  background-color: $green
+  color: white
+
+  .highlight
+    background-color: $purple
+
+  a
+    color: white
+    text-decoration: underline
+
+  .button.button-secondary
+    background-color: $purple
+    border-color: $purple
+    color: white
+    text-decoration: none
+    &:hover,
+    &:focus
+      border-color: white
+
+
+.section-white
+  color: black
+
+  .highlight
+    background-color: $yellow
+
+  a
+    color: $gray
+    text-decoration: underline
+
+  .button.button-secondary
+    background-color: $yellow
+    border-color: $yellow
+    color: $gray
+    text-decoration: none
+    &:hover,
+    &:focus
+      border-color: $gray
+
+
+.section-purple
+  background-color: $purple
+  color: white
+
+  .highlight
+    background-color: $red
+
+  a
+    color: white
+    text-decoration: underline
+
+  .button.button-secondary
+    background-color: $red
+    border-color: $red
+    color: white
+    text-decoration: none
+    &:hover,
+    &:focus
+      border-color: white
+
+
+footer
+  padding: 30px 0
+  background-color: $footer-gray
+  color: white
+
+  p
+    margin: 0
+
+  ul
+    list-style-type: none
+    padding-left: 0
+    margin-top: 0
+
+  li
+    margin-bottom: 1rem
+
+  a
+    color: $yellow
+    text-decoration: none
+    &:hover
+      color: $yellow
+      text-decoration: underline
+
+  h4
+    font-size: 1.2em
+    font-weight: 600
+    margin-top: 0
+    margin-bottom: 2rem
+
+  img
+    width: 40px
+    padding: 0 10px
+
+  .attribution
+    text-align: center
+    padding-top: 30px
