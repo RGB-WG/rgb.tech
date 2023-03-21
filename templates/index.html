@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>RGB smart contracts</title>
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="front.css">
     <link rel="stylesheet" href="tachyons-ext.css">
+    <link rel="stylesheet" href="front.css">
 </head>
 
 <body>
@@ -28,8 +27,17 @@
 <main>
     {%- for page in section.pages %}
         {% if page.extra['header'] %}
-            <header class="{{page.extra['class']}}">
-                {{ page.content | safe }}
+            <header class="mt3 mb6 w-100 mw-none ph3 mw8-m mw9-l center">
+                <div class="flex flex-column flex-row-l">
+                    <div class="w-70-l mw8-l">
+                        {{ page.content | safe }}
+                    </div>
+                    <div class="w-30-l flex-column pl0-l pr0-l pl3 pr3">
+                        <a class="button button-download ph4 mt0 w-100" href="/learn/get-started">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
             </header>
         {% else %}
             <section class="{{page.extra['color']}}">
