@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <title>RGB smart contracts</title>
     <link rel="stylesheet" href="tachyons-ext.css">
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="front.css">
 </head>
 
 <body>
 <nav class="flex flex-row justify-center justify-end-l items-center flex-wrap ph2 pl3-ns pr3-ns pb3">
-    <div class="brand flex-auto w-100 w-auto-l self-start tc tl-l">
-        <a href="/" class="brand">
-            <img class="v-mid ml0-l" alt="RGB Logo" src="rgb-logo-blk.svg">
+    <div id="logo" class="flex-auto w-100 w-auto-l self-start self-center tc tl-l">
+        <a href="/">
+            <img alt="RGB Logo" src="logo/rgb-symbol-color.svg">
         </a>
     </div>
     <ul class="nav list w-100 w-auto-l flex flex-none flex-row flex-wrap justify-center justify-end-l items-center pv2 ph0 ph4-ns">
@@ -34,7 +35,7 @@
                         {{ page.content | safe }}
                     </div>
                     <div class="w-30-l flex-column pl0-l pr0-l pl3 pr3">
-                        <a class="button button-download ph4 mt0 w-100" href="/learn/get-started">
+                        <a class="button button-download ph4 mt0 w-100" href="/">
                             Get Started
                         </a>
                     </div>
@@ -61,10 +62,10 @@
         <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
             <h4>Get help!</h4>
             <ul>
-                <li><a href="/learn">RGB FAQ</a></li>
-                <li><a href="/learn">White paper</a></li>
-                <li><a href="/learn">Documentation</a></li>
-                <li><a href="/learn">Standards</a></li>
+                <li><a href="http://rgbfaq.com">RGB FAQ</a></li>
+                <li><a href="https://blackpaper.rgb.tech">White paper</a></li>
+                <li><a href="/docs">Documentation</a></li>
+                <li><a href="https://standards.lnp-bp.org">Standards</a></li>
             </ul>
         </div>
         <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
@@ -80,7 +81,7 @@
             <h4>Social</h4>
             <div class="flex flex-row flex-wrap">
                 <a href="https://twitter.com/lnp_bp"><img src="/social/twitter.svg" alt="twitter logo" title="Twitter"></a>
-                <a href="https://www.youtube.com/channel/LNP-BP"><img class="pv2" src="/social/youtube.svg" alt="youtube logo" title="YouTube"></a>
+                <a href="https://www.youtube.com/LNP-BP"><img class="pv2" src="/social/youtube.svg" alt="youtube logo" title="YouTube"></a>
                 <a href="https://reddit.com/r/RGB_protocol"><img src="/social/reddit.svg" alt="discord logo" title="Discord"></a>
                 <a href="https://github.com/RGB-WG"><img src="/social/github.svg" alt="github logo" title="GitHub"></a>
             </div>
