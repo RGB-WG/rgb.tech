@@ -21,5 +21,5 @@ header = false
 * ### Bitcoin & Lightning
 
   RGB is a native member of Bitcoin and Lightning network ecosystem, brining
-  reach smart contracts in a scalable way to the World's most secure and
+  rich smart contracts in a scalable way to the World's most secure and
   censorship-resistant cryptocurrency.
