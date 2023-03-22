@@ -19,6 +19,6 @@ for the support!
 * ### Sponsors
 
   The RGB project receives support from individuals & companies through 
-  [LNP/BP Standards Association](https://lnp-bp.org). 
+  [LNP/BP Standards Association](https://www.lnp-bp.org). 
 
   <div class="button button-secondary">See our donors & sponsors</div>
