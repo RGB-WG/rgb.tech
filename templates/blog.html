@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section-white"><div>
+    <h1 class="title">
+        {{ section.title }}
+    </h1>
+    <table class="post-list collapse w-100 f2-l f2-m f3-s"><tbody>
+        <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->
+        {%- for page in section.pages %}
+            <tr>
+                <td class="tr o-60 pr4 pr5-l bn w-20">{{ page.date }}</td>
+                <td class="bn"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></td>
+            </tr>
+        {% endfor -%}
+    </tbody></table>
+    <!-- TODO: Remove me once we have enough blog posts -->
+    <div style="margin-bottom: 400px">&nbsp;</div>
+</div></section>
+{% endblock content %}

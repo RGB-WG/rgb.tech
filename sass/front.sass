@@ -175,6 +175,30 @@ header .button.button-download
     &:focus
       border-color: white
 
+section.li-columns
+  ul
+    @extend .flex-none
+    @extend .flex-l
+    padding: 0
+
+    li
+      @extend .w-100
+      @extend .pv2
+      @extend .pv0-l
+      @extend .mt4
+      list-style-type: none
+      &:not(:first-child)
+        @extend .mh5-l
+        margin-right: 0
+
+      h3
+        margin-top: 0
+
+      p
+        @extend .f3
+        @extend .lh-copy
+        margin-top: 0
+        margin-bottom: 30px
 
 footer
   padding: 30px 0

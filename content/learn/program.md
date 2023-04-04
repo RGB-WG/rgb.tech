@@ -2,7 +2,7 @@
 weight = 20
 title = "Programming RGB"
 [extra]
-header = false
+bg-color = "white"
 +++
 
 Contract business logic in RGB is defined through so-called *schema*; the 
@@ -22,7 +22,7 @@ universal, but is bound by number of operation steps, measured by gas
 consumption in Ethereum-like systems, and by accumulated computational 
 complexity measure in case of AluVM).
 
-## Writing simple contract
+### Writing simple contract
 
 The best way to understand RGB is through example. Let's do a contract which 
 will work as a digital identity.
@@ -119,7 +119,7 @@ transition iLostMyKey executes Revocation
    -- the above defines new state and assigns it to a single-use-seal
 ```
 
-## Adding fungible state
+### Adding fungible state
 
 Now, let's add some tokens to the contract, in form of "I owe you" obligations
 provided by the decentralized identity:
@@ -271,7 +271,7 @@ schema RgbWrapBtc
     assert sum spent == sum received
 ```
 
-## Contract intefaces
+### Contract interfaces
 
 But how the wallet makes the sense of the contract? RGB contract can do a lot of things, and if schema developers would need to do a separate wallet for each schema the entrance threshold would be too high. To avoid such situation a concept of *contract interface* was created. A *contract interface* is a standard way communicating with RGB Node asking it for a semantically-meaningful state and creating operations. Such concept of interface is similar to the concept of ERC standards and ABI files in Ethereum world; the most common interfaces are called "RGBxx" and are defined as a separate LNP/BP standards.
 

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section-white">
+    <div>
+        <header class="pb0">
+            <h1 id="title">{{ section.title }}</h1>
+        </header>
+
+        {{ section.content | safe }}
+    </div>
+</section>
+
+{%- for page in section.pages %}
+    <section class="section-{{page.extra['bg-color']}}">
+        <div>
+            <header class="pb0">
+                <h2>{{ page.title }}</h2>
+                <div class="highlight"></div>
+            </header>
+
+            {{ page.content | safe }}
+        </div>
+    </section>
+{% endfor -%}
+{% endblock content %}

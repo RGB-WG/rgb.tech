@@ -2,7 +2,7 @@
 weight = 10
 title = "RGB Overview"
 [extra]
-header = false
+bg-color = "green"
 +++
 
 RGB is a full-fledged smart contract system which operates on top of Bitcoin
@@ -25,8 +25,8 @@ anyone else than the contract participants (hence scalability).
 
 RGB makes bitcoin to pass beyond limitations of [CIA triad] via achieving 
 different properties on different layers:
-* Blockchain provides integrity & availability;
-* Lightning network – integrity & confidentiality;
-* RGB – confidentiality & availability.
+* **Blockchain** provides integrity & availability;
+* **Lightning network** – integrity & confidentiality;
+* **RGB** – confidentiality & availability.
 
 [CIA triad]: https://www.coursera.org/articles/cia-triad

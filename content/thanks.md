@@ -14,11 +14,15 @@ for the support!
   RGB is a community project with a lot of developers dedicating their
   time and efforts to create it and extend it's toolchain.
 
-  <div class="button button-secondary">See individual contributors</div>
+  <div class="button button-secondary"><a href="/thanks/devs">
+    See individual contributors
+  </a></div>
 
 * ### Sponsors
 
   The RGB project receives support from individuals & companies through 
   [LNP/BP Standards Association](https://www.lnp-bp.org). 
 
-  <div class="button button-secondary">See our donors & sponsors</div>
+  <div class="button button-secondary"><a href="/thanks/sponsors">
+    See our donors & sponsors
+  </a></div>
