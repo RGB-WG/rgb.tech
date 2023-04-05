@@ -31,4 +31,4 @@ Check out the following guides:
   to understand its terminology and internal architecture in details. A good
   starting point can be through multiple RGB learning resources.
 
-  <a href="/learn" class="button button-secondary">Access docs</a>
+  <a href="/docs" class="button button-secondary">Access docs</a>
