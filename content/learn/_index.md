@@ -10,14 +10,38 @@ embraces concept of private & mutual ownership and is a "post-blockchain",
 Turing-complete form of trustless distributed computing which does not require 
 introduction of tokens.
 
-* ### Understand RGB
+* ### FAQ & videos
 
-  RGB is much more complex than simple bitcoin applications; to unlock its true
-  power in creating the world of Bitcoin Finance (#BiFi) it is important
-  to understand its terminology and internal architecture in details. A good
-  starting point can be through multiple RGB learning resources.
+  Best place to learn core RGB concepts is on our [FAQ] website. We also have
+  accumulated a lot of explanatory videos on our [YouTube channel].
+
+  <a href="/docs#tutorials" class="button button-secondary">RGB tutorials</a>
+
+* ### Specifications
+
+  RGB is a multi-layer stack of protocols. A good overview is given in the
+  [RGB whitepaper] but there are other specs available.
+
+  <a href="/docs#specs" class="button button-secondary">RGB specs</a>
+
+* ### API Docs
+
+  For developers, we have a lot of API reference documentation for RGB libraries
+  used in contract development and integration.
+
+  <a href="/docs#api" class="button button-secondary">API references</a>
+
+<div>&nbsp;</div>
+
+* ### Use RGB
+
+  Learn RGB through using its - exploring its functionality starting at 
+  installation and continuing the journey as a power user with RGB 
+  command-line tool and RGB Node.
   
-  <a href="/docs" class="button button-secondary">RGB documentation</a>
+  <a href="/install" class="button button-secondary">Install RGB</a>
+  
+  <a href="/power-user" class="button button-secondary">Power user guidelines</a>
 
 
 * ### Integrate RGB
@@ -39,3 +63,6 @@ introduction of tokens.
 
   <a href="/program" class="button button-secondary">Learn to program</a>
 
+[FAQ]: https://rgbfaq.com
+[YouTube channel]: https://youtube.com/LNP-BP
+[RGB whitepaper]: https://blackpaper.rgb.tech
