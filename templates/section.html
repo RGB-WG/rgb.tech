@@ -1,26 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="section-white">
-    <div>
-        <header class="pb0">
-            <h1 id="title">{{ section.title }}</h1>
-        </header>
-
-        {{ section.content | safe }}
-    </div>
-</section>
-
-{%- for page in section.pages %}
-    <section class="section-{{page.extra['bg-color']}}">
+    {% set bg = ["purple", "white", "red", "green"] %}
+    {% if section.extra['multicolumn'] %}
+        {% set li_class = 'li-columns' %}
+    {% else %}
+        {% set li_class = '' %}
+    {% endif %}
+    <section class="section-white {{li_class}}">
         <div>
             <header class="pb0">
-                <h2>{{ page.title }}</h2>
-                <div class="highlight"></div>
+                <h1 id="title">{{ section.title }}</h1>
             </header>
 
-            {{ page.content | safe }}
+            {{ section.content | safe }}
         </div>
     </section>
-{% endfor -%}
+
+    {%- for page in section.pages %}
+        {% if page.extra['multicolumn'] %}
+            {% set li_class = 'li-columns' %}
+        {% else %}
+            {% set li_class = '' %}
+        {% endif %}
+        {% if page.extra['bg-color'] %}
+            {% set bg_color = page.extra['bg-color'] %}
+        {% else %}
+            {% set idx = loop.index % 4 %}
+            {% set bg_color = bg[idx] %}
+        {% endif %}
+        <section class="section-{{bg_color}} {{li_class}}">
+            <div>
+                <header {% if page.extra['anchor'] %} id="{{page.extra['anchor']}}" {% endif %} class="pb0">
+                    <h2>{{ page.title }}</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                {{ page.content | safe }}
+            </div>
+        </section>
+    {% endfor -%}
 {% endblock content %}

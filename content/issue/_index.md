@@ -1,4 +1,4 @@
 +++
-title = "RGB guidelines"
+title = "Issue on RGB"
 sort_by = "weight"
 +++

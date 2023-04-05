@@ -7,31 +7,44 @@ header = false
 
 * ### Hold assets
 
-  Install one of the wallets supporting RGB and start 
-  interacting with RGB contracts.
+  Install one of wallets supporting RGB and start using RGB assets or interact 
+  ith RGB contracts.
 
-  <div class="button button-secondary">Check wallets</div>
+  <a href="/software#wallets" class="button button-secondary">Check wallets</a>
 
 * ### Trade
 
-  Several exchanges already support RGB assets; use one of them
-  to start trading.
+  Several exchanges already support RGB assets; use one of them to start trading
+  existing assets.
 
-  <div class="button button-secondary">Check exchanges</div>
+  <a href="/software#exchanges" class="button button-secondary">Check exchanges</a>
 
+* ### Issue
+
+  Issuing assets, NFTs and many other standard RGB contracts doesn't require 
+  programming skills.
+
+  <a href="/issue" class="button button-secondary">Issuer guides</a>
+
+<!--
 * ### Earn
 
   Join one of the existing liquidity pools for DEXes and start
   earning money.
 
-  <div class="button button-secondary">Check pools</div>
+  <a href="/software#pools" class="button button-secondary">Check pools</a>
+-->
 
-### Develop
+Install any of existing [RGB wallets] and start using RGB today.
+Developers and power users can harness the power of RGB and work with the smart
+contracts by using [RGB command-line] or running an [RGB Node] on their home 
+server or in a [private cloud].
 
-Developers and power users can harness the power of RGB and work
-with the smart contracts by using [RGB command-line] or running an
-[RGB Node] on their home server or in a [private cloud].
+If you are looking at integrating RGB into your software, check our
+[integration page][SDKs].
 
-[RGB command-line]: https://github.com/RGB-WG/rgb
-[RGB Node]:  https://github.com/RGB-WG/rgb-node
+[RGB wallets]: /software#wallets
+[RGB command-line]: /install#rgb
+[RGB Node]:  /install#node
+[SDKs]: /integrate
 [private cloud]: https://mycitadel.io/cloud

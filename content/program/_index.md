@@ -1,13 +1,11 @@
 +++
-weight = 10
-title = "RGB Overview"
-[extra]
-bg-color = "green"
+title = "Program RGB"
+sort_by = "weight"
 +++
 
 RGB is a full-fledged smart contract system which operates on top of Bitcoin
 and Lightning network. If you think about blockchain as a settlement layer and
-Lightning as a scaling layers, *RGB is the programmability layer*, finally 
+Lightning as a scaling layers, *RGB is the programmability layer*, finally
 adding to the first and most censorship-resistant cryptographic-based store of
 value properties which were absent and desired for many years.
 
@@ -23,7 +21,7 @@ into the channel. RGB scripts and state fully exists in the client-side world,
 not seen from outside (hence privacy) - and not required to be validated by
 anyone else than the contract participants (hence scalability).
 
-RGB makes bitcoin to pass beyond limitations of [CIA triad] via achieving 
+RGB makes bitcoin to pass beyond limitations of [CIA triad] via achieving
 different properties on different layers:
 * **Blockchain** provides integrity & availability;
 * **Lightning network** – integrity & confidentiality;

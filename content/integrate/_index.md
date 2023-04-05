@@ -1,4 +1,4 @@
 +++
-title = "RGB guidelines"
+title = "Integrate RGB"
 sort_by = "weight"
 +++

@@ -1,4 +1,4 @@
 +++
-title = "RGB guidelines"
+title = "RGB Software"
 sort_by = "weight"
 +++
