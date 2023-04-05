@@ -1,19 +1,17 @@
 +++
 weight = 35
 title = "Develop on RGB"
-[extra]
-header = false
 +++
 
 Interested in understanding RGB or developing new forms of smart contracts? 
 Check out the following guides:
 
-* ### Writing RGB contracts
+* ### Writing contracts
 
   Simple RGB contracts can be created in **Rust** (using handy macros).
   More advanced contracts will require writing code for **AluVM** in
   **AluAssembly language**. We also work on a new high-level language called
-  **Contractum**, which is targeting end of the year.
+  **Contractum**, which release is targeted towards the end of the year.
 
   <a href="/program" class="button button-secondary">Learn to program</a>
 

@@ -1,8 +1,6 @@
 +++
 weight = 20
 title = "Build with RGB"
-[extra]
-header = false
 +++
 
 RGB was designed to allow everything what is possible with blockchain-based 

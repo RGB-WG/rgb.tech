@@ -1,22 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% set bg = ["section-purple", "section-white", "section-red", "section-green"] %}
-    {%- for page in section.pages %}
-        {% if page.extra['header'] %}
-        <header class="mt3 mb6 w-100 mw-none ph3 mw8-m mw9-l center">
-            <div class="flex flex-column flex-row-l">
-                <div class="w-70-l mw8-l">
-                    {{ page.content | safe }}
-                </div>
-                <div class="w-30-l flex-column pl0-l pr0-l pl3 pr3">
-                    <a class="button button-download ph4 mt0 w-100" href="/guide">
-                        Get Started
-                    </a>
-                </div>
+    <header class="mt3 mb6 w-100 mw-none ph3 mw8-m mw9-l center">
+        <div class="flex flex-column flex-row-l">
+            <div class="w-70-l mw8-l">
+                {{ section.content | safe }}
             </div>
-        </header>
-        {% else %}
+            <div class="w-30-l flex-column pl0-l pr0-l pl3 pr3">
+                <a class="button button-download ph4 mt0 w-100" href="/guide">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </header>
+    {% set bg = ["section-white", "section-red", "section-green", "section-purple"] %}
+    {%- for page in section.pages %}
         {% set idx = loop.index % 4 %}
         <section class="{{bg[idx]}} li-columns">
             <div>
@@ -28,6 +26,5 @@
                 {{ page.content | safe }}
             </div>
         </section>
-        {% endif %}
     {% endfor -%}
 {% endblock content %}

@@ -1,8 +1,6 @@
 +++
 weight = 10
 title = "Why RGB?"
-[extra]
-header = false
 +++
 
 * ### Scalability

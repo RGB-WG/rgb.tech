@@ -1,8 +1,6 @@
 +++
 weight = 40
 title = "Thanks"
-[extra]
-header = false
 +++
 
 RGB would not exist without the generous contributions of time, work, 

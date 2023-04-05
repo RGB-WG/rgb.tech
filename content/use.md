@@ -1,8 +1,6 @@
 +++
 weight = 30
 title = "Use RGB"
-[extra]
-header = false
 +++
 
 * ### Hold assets
