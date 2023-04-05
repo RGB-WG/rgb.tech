@@ -17,7 +17,7 @@ are kept inside taproot tree and not directly visible onchain.
 
 Such approach also allows RGB to operate on top of Lightning network, since
 it can work with any bitcoin transaction, including transactions incorporated
-into the channel. RGB scripts and state fully exists in the client-side world,
+into a channel. RGB scripts and state fully exists in the client-side world,
 not seen from outside (hence privacy) - and not required to be validated by
 anyone else than the contract participants (hence scalability).
 
