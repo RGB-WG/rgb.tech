@@ -22,7 +22,7 @@ title = "Use RGB"
   Issuing assets, NFTs and many other standard RGB contracts doesn't require 
   programming skills.
 
-  <a href="/power-user#issue" class="button button-secondary">Issuer guides</a>
+  <a href="/power-user/#issue" class="button button-secondary">Issuer guides</a>
 
 <!--
 * ### Earn

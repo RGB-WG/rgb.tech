@@ -2,7 +2,8 @@
 weight = 20
 title = "Adding fungible state"
 [extra]
-bg-color = "green"
+bg-color = "red"
+anchor = "fungibles"
 +++
 
 Now, let's add some tokens to the contract, in form of "I owe you" obligations

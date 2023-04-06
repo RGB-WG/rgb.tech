@@ -3,6 +3,7 @@ weight = 30
 title = "Contract interfaces"
 [extra]
 bg-color = "purple"
+anchor = "interfaces"
 +++
 
 But how the wallet makes the sense of the contract? RGB contract can do a lot of things, and if schema developers would need to do a separate wallet for each schema the entrance threshold would be too high. To avoid such situation a concept of *contract interface* was created. A *contract interface* is a standard way communicating with RGB Node asking it for a semantically-meaningful state and creating operations. Such concept of interface is similar to the concept of ERC standards and ABI files in Ethereum world; the most common interfaces are called "RGBxx" and are defined as a separate LNP/BP standards.

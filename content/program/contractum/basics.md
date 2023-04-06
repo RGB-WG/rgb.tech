@@ -2,11 +2,11 @@
 weight = 10
 title = "Writing simple contract"
 [extra]
-bg-color = "white"
+bg-color = "green"
+anchor = "basics"
 +++
 
-The best way to understand RGB is through example. Let's do a contract which
-will work as a digital identity.
+Let's do a contract which will work as a digital identity.
 
 We have to start with definition of a data type representing the key. This is
 not a part of the contract itself and may be imported into multiple contracts

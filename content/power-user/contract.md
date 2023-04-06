@@ -26,7 +26,7 @@ setup.
 To import a contract into your stash one first needs to get a contract 
 consignment from a contract issuer. A contract consignment is either a binary
 file – or an ASCII/Base64-armoded text (and example can be found it the
-["issuing contract" section](/power-user#issue)).
+["issuing contract" section](/power-user/#issue)).
 
 ```sh
 $ rgb import contract.rgb

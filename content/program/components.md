@@ -4,6 +4,7 @@ title = "Components"
 [extra]
 bg-color = "red"
 multicolumn = true
+anchor = "components"
 +++
 
 In RGB, there is no such thing as "program a smart contract"; instead, contracts
