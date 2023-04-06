@@ -23,3 +23,6 @@ to this schema.
 * <a href="#schema" class="button button-secondary">Creating custom schema</a>
 * <a href="#interface" class="button button-secondary">Doing custom interface</a>
 * <a href="#iimpl" class="button button-secondary">Implementing interface</a>
+
+Sample project providing the source code from this chapter can be found in
+[examples directory of RGB smart contract compiler repository](https://github.com/RGB-WG/rgbsc/blob/master/examples/rgb20-simplest.rs).
