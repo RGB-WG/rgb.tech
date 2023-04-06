@@ -1,5 +1,5 @@
 +++
-title = "Node & comand-line"
+title = "Node & command-line"
 weight = 50
 [extra]
 bg-color = "purple"

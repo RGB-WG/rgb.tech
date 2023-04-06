@@ -53,7 +53,7 @@ Following people has contributed into the discussions and RGB component design
 The community and contribution management since 2019 was performed by 
 Olga Ukolova, LNP/BP Standards Association.
 
-Many input into protocol design ideas and suggestions came from personal 
+Many inputs into protocol design ideas and suggestions came from personal 
 conversations of Dr Maxim Orlovsky and Giacomo Zucco with notable 
 cryptographers, specialists on distributed systems and game theorists, 
 including:

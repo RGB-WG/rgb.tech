@@ -16,7 +16,7 @@ from a _data type library_.
 data PgpKey :: curve U8, key Bytes
 ```
 
-AS you might see, the code looks similar to Haskel. New data types are declared
+As you might see, the code looks similar to Haskel. New data types are declared
 with `data` keyword, and can be composed of named fields (being structs),
 unnamed fields (tuples), operate as enums (in this case you should use
 `|` instead of `,`), or unions, where each variant may in turn have an

@@ -24,6 +24,6 @@ multicolumn = true
 * ### Guidelines
 
   Check our guidelines, which help in getting started with RGB from both user 
-  and developer perspective.
+  and developer perspectives.
 
   <a href="/guide" class="button button-secondary">Read guidelines</a>

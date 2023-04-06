@@ -6,7 +6,7 @@ anchor = "cmd"
 bg-color = "green"
 +++
 
-Main command-line tool to work with RGB smart contracts is `rgb`. It is written
+The main command-line tool to work with RGB smart contracts is `rgb`. It is written
 in Rust programming language and open-sourced under Apache 2.0 license.
 The tool provides complete RGB functionality locally, not requiring any node
 or server connection outside of Electrum server.
@@ -35,7 +35,7 @@ Next, you need to install developer components, which are OS-specific:
   brew install cmake pkg-config
   ```
 
-* Windows: download and install the latest [Visual Studio Redistributable][VS]
+* Windows: download and install the latest [Visual Studio Redistributable](https://visualstudio.microsoft.com/downloads/)
 
 
 ### Installing from crates.io

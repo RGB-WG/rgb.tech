@@ -10,7 +10,7 @@ for the support!
 * ### Developers
 
   RGB is a community project with a lot of developers dedicating their
-  time and efforts to create it and extend it's toolchain.
+  time and efforts to create it and extend its toolchain.
 
   <div class="button button-secondary"><a href="/thanks/devs">
     See individual contributors

@@ -55,7 +55,7 @@ asset can be renamed, future renames after certain renaming may be prohibited
 
 Second, the use of braces, brackets and question mark around and next to the
 state name. Both braces and brackets mean that the operation works not with a
-single *state atom*, but instead an array (braces) or set (brackets) of *state
+single *state atom*, but instead an array (brackets) or set (braces) of *state
 atoms*. Set differs from an array in the fact that all elements of the set must
 be unique, while in array they may repeat. Coming back to our operations, asset
 transfer may spend a number of assets from different owners, but all of them
@@ -132,7 +132,7 @@ schema RgbWrapBtc
   public Issue :: Burn, proof ProofOfBurn -> issued [Value]
     -- here we verify that the UTXO input constructed with the key given in
     -- the proof according to the provably-unspent procedure exactly matches
-    -- output existing onchain
+    -- output existing on-chain
     let spk' = match proof.descriptor
       Wpkh(pk) =>
         pk |>

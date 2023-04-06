@@ -6,7 +6,7 @@ bg-color = "purple"
 +++
 
 Standard libraries is the lowest level for integration of RGB into other 
-software. Changes in standard libraries does not affect the safety of RGB assets
+software. Changes in standard libraries do not affect the safety of RGB assets
 and security of contracts, however may break software compatibility. Thus,
 this layer is maintained by [LNP/BP Standards Association][LNP/BP], which  
 ensures gradual changes and stability of APIs, alongside their improvements.
