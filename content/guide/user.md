@@ -19,7 +19,7 @@ Learn how to use RGB by checking out these user guidelines:
   Issuing assets, NFTs and many other standard RGB contracts is very simple and 
   doesn't require any programming skills.
   
-  <a href="/issue" class="button button-secondary">Issuer guidelines</a>
+  <a href="/power-user#issue" class="button button-secondary">Issuer guidelines</a>
 
 * ### Using RGB contracts
 

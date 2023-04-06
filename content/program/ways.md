@@ -18,7 +18,7 @@ code at all – even for complex contracts like NFTs, identities, DAOs etc.
   issued without writing even a line of code. All you need is to find a schema
   and use command-line tools or GUI-based wallets to issue your contract.
 
-  <a href="/issue" class="button button-secondary">Issue a contract with no code</a>
+  <a href="/power-user#issue" class="button button-secondary">Issue a contract with no code</a>
 
 * ### RGB Rust DSL
 

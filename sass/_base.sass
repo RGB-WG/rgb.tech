@@ -1,5 +1,7 @@
 @import "_tachyons"
 
+$code: #2b303b
+
 html
   font-size: 66.6%
 
@@ -57,6 +59,13 @@ section
 pre
   padding: 2rem
   font-size: smaller
+  code
+    background-color: inherit
+
+code
+  color: white
+  background-color: $code
+  padding: 0.1em 0.2em
 
 h1 + .blog-date
   color: gray
