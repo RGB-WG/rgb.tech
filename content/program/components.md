@@ -8,7 +8,7 @@ anchor = "components"
 +++
 
 In RGB, there is no such thing as "program a smart contract"; instead, contracts
-themselves are issued with no conde. This helps to simplify life of asset 
+themselves are issued with no code. This helps to simplify life of asset 
 issuers and normies, who just need to issue a token, create their self-sovereign
 identity, run a DAO etc.
 

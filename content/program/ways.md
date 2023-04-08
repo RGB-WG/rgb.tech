@@ -32,8 +32,8 @@ code at all – even for complex contracts like NFTs, identities, DAOs etc.
 
 * ### Contractum
 
-  Contractum is the forthcoming delarative language for writing safe and
-  easy-to-audit smart contracts for RGB. Contractum is bein under an active
+  Contractum is the forthcoming declarative language for writing safe and
+  easy-to-audit smart contracts for RGB. Contractum is being under an active
   development and we plan to have it released by the end of the year. Today
   you may preview how writing RGB contracts in Contractum may look like in a
   future.

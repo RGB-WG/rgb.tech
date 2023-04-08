@@ -10,8 +10,8 @@ on your use case you may need to install:
 
 * ### RGB Command-line
 
-    For power desktop users the best way to experience RGB is to use `rgb`
-    command-line tool, which is similarly to `git` command performs all operations
+    For power desktop users, the best way to experience RGB is to use `rgb`
+    command-line tool which, similarly to `git` command, performs all operations
     with RGB smart contracts.
     
     <a href="/install#cmd" class="button button-secondary">Install `rgb`</a>

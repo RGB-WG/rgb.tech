@@ -3,7 +3,7 @@ title = "Sponsors"
 +++
 
 The RGB project receives support from individuals & companies through
-[LNP/BP Standards Association](https://www.lnp-bp.org). OVer the years the
+[LNP/BP Standards Association](https://www.lnp-bp.org). Over the years the
 following organizations and individuals had significantly contributed to the
 RGB development:
 

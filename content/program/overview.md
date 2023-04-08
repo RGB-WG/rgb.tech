@@ -7,8 +7,8 @@ bg-color = "green"
 
 Contract business logic in RGB is defined through so-called *schema*; the 
 specific RGB contract must implement some *schema*. One may think of a schema 
-as a "class" definition in the OOP world; in that terms specific RGB contracts 
-are "class instance" created by the schema constructor (*genesis operation*). 
+as a "class" definition in the OOP world; in that terms, specific RGB contracts 
+are "class instances" created by the schema constructor (*genesis operation*). 
 Such approach allows to separate role of contract developer (in RGB called 
 *schema developer*) and *contract issuer*: the first one needs to be an 
 experienced developer, while the second one is not required to know anything 
