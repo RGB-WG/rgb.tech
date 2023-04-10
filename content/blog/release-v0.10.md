@@ -8,11 +8,11 @@ TL;DR
 
 LNP/BP Standards Association <https://www.lnp-bp.org>, supported by Fulgur 
 Ventures, Bitfinex, Hojo Foundation, Pandora Prime, and DIBA, is happy to
-announce the release of RGB v0.10 - the next significant milestone in the RGB
-protocol <https://rgb.tech> which brings full support of smart contracts to
-Bitcoin and Lightning. This is the result of a great cross-industry long-term
-collaboration between these bitcoin companies and more than four years of
-extensive development work.
+announce the release of RGB v0.10 - the next significant milestone in the 
+RGB protocol <https://rgb.tech> which brings full support of smart contracts
+to Bitcoin and Lightning. This is the result of a great cross-industry 
+long-term collaboration between these bitcoin companies and more than four 
+years of extensive development work.
 
 RGB v0.10 can be downloaded and installed as described on <https://rgb.tech>
 website, which also contains a number of user and developer guidelines.
@@ -31,8 +31,8 @@ In 2019 me (Maxim Orlovsky) and Giacomo Zucco formed the LNP/BP Standard
 Association, aiming to bring RGB from the concept to production. The initiative
 was supported by Bitfinex and Fulgur Ventures. My goal with RGB was not just to
 enable assets on Lightning, but that of a much larger scope: to build a
-programmability layer for Bitcoin and Lightning, which may unlock much more
-than just tokens: DAOs, decentralized identities and other cases that
+programmability layer for Bitcoin and Lightning, which may unlock other cases
+than just tokens: DAOs, decentralized identities and many more things which
 bitcoin itself was lacking. This took much longer than was expected, and both 
 myself and the LNP/BP Standards Association had gone through very turbulent
 times on this road, relying on self-financing for more than a year...
@@ -241,14 +241,6 @@ All releases and major things are being announced on:
 
 Other websites are not in control of the RGB protocol developers and are not
 open-source and should not be considered to be trusted sources of information.
-
-
--------------------------
-Maxim Orlovsky
-Mail: orlovsky [at] lnp-bp.org
-Github: https://github.com/dr-orlovsky
-Twitter: https://twitter.com/dr_orlovsky
-PGP: EAE7 30CE C0C6 6376 3F02 8A58 6009 4BAF 18A2 6EC9
 
 
 [1]: https://www.youtube.com/watch?v=xHWxtmgQP94

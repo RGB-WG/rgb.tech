@@ -48,7 +48,7 @@ Before the final RGB release it might be required to specify concrete
 pre-release version as an argument:
 
 ```
-$ cargo install rgb-contracts --all-features --version 0.10.0-beta.1
+$ cargo install rgb-contracts --all-features --version 0.10.0
 ```
 
 
