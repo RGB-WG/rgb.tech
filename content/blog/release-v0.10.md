@@ -2,6 +2,7 @@
 title = "RGB release v0.10"
 date = 2023-04-10
 authors = ["Maxim Orlovsky", "Olga Ukolova"]
+description = "RGB 0.10 is released, bringing full power of smart contracts to Bitcoin & Lightning"
 +++
 
 TL;DR
