@@ -1,11 +1,31 @@
 {% extends "base.html" %}
 
+{% block social_media %}
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:type" content="article" />
+    {%- for author in page.authors %}
+        <meta property="og:article:author" content="{{ author }}" />
+    {% endfor -%}
+    <meta property="og:article:published_time" content="{{ page.date }}" />
+    <meta property="og:article:section" content="Blog" />
+    <meta property="og:url" content="https://rgb.tech{{ page.path }}" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="{{ page.description }}">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+{% endblock social_media %}
+
 {% block content %}
 <section class="section-white"><div>
-    <h1 class="title">
-        {{ page.title }}
-    </h1>
-    <p class="blog-date"><strong>{{ page.date }}</strong></p>
+    <header class="pb0">
+        <h1>{{ page.title }}</h1>
+        <p class="blog-date"><strong>{{ page.date }}</strong></p>
+        <div class="highlight"></div>
+    </header>
+
     {{ page.content | safe }}
 </div></section>
 {% endblock content %}

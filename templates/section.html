@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% block social_media %}
+    <meta property="og:title" content="{{ section.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="{{ section.description }}">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+{% endblock social_media %}
+
 {% block content %}
     {% set bg = ["purple", "white", "red", "green"] %}
     {% if section.extra['multicolumn'] %}

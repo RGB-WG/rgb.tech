@@ -1,6 +1,7 @@
 +++
 title = "RGB release v0.10"
 date = 2023-04-10
+authors = ["Maxim Orlovsky", "Olga Ukolova"]
 +++
 
 TL;DR
@@ -69,11 +70,11 @@ contracts which may be arbitrary customized by contract developers.
 
 This release brings the support of the following features to RGB:
 
-- ### Global state in RGB contracts
+- #### Global state in RGB contracts
   Now each RGB contract has a global state accessible by a virtual machine
   and clients (wallets etc).
 
-- ### Contract interfaces
+- #### Contract interfaces
   Interfaces, introduced in this version, represent a standard way of
   communicating a diverse range of smart contracts through well-defined APIs.
   Interfaces can be compared to contract ABIs and ERCs in Ethereum world,
@@ -84,7 +85,7 @@ This release brings the support of the following features to RGB:
   developers may add more interfaces to their existing contracts over time
   without the need to update the immutable contract itself.
 
-- ### Strict type system
+- #### Strict type system
   Strict types is a new functional data type system with provable
   properties used for the RGB contract state representation and introspection.
   It allows compile-time guarantees on the size of any data, simplifying RGB
@@ -95,27 +96,27 @@ This release brings the support of the following features to RGB:
   back in the days of Satoshi). You can learn more about strict types on
   <https://www.strict-types.org>
 
-- ### Contracts in Rust
+- #### Contracts in Rust
   Writing and compiling an RGB smart contracts in Rust. Thanks to the strict
   types, it is also possible to compile rust data types right into RGB 
   contracts.
 
-- ### State introspection
+- #### State introspection
   Contracts can introspect their own state in the validation code used by the
   virtual machine, which unlocks the way for writing complex forms of contracts
   working with bitcoin transactions, DLCs and other complex data.
 
-- ### URL-based invoice format
+- #### URL-based invoice format
   Previously RGB was using Bech32m-encoded invoices, which were very long,
   not human-readable and couldn't be automatically opened with most of the
   software. The new format is much shorter, easier to verify by the user and
   can be opened automatically as a link with a preconfigured software.
 
-- ### WASM support
+- #### WASM support
   RGB standard library can run without I/O and file system access,
   i.e. can operate inside a web page or a browser plugin.
 
-- ### Tapret descriptors and custom derivation
+- #### Tapret descriptors and custom derivation
   RGB uses taproot-based OP_RETURN commitments (in short - tapret), which
   require support on the descriptor level such that wallets could see the 
   transactions with tweaked outputs as those belonging to the wallet descriptor. 
@@ -123,7 +124,7 @@ This release brings the support of the following features to RGB:
   wallets from accidentally spending outputs with RGB assets (and thus -
   destroying assets).
 
-- ### Simplified dependencies
+- #### Simplified dependencies
   RGB consensus layer is being shipped with fewer dependencies, improving the 
   stability of API. We have abandoned the dependency on custom bulletproofs 
   implementation from Grin projects. We also do not use rust-bitcoin and 
@@ -133,13 +134,13 @@ This release brings the support of the following features to RGB:
   consensus layer (like those which halted rust-bitcoin powered software when 
   Burak's hack had happened last year).
 
-- ### Simplified integration
+- #### Simplified integration
   Many operations that previously required multiple API calls, as well as
   cross-language encoding of complex data structures now work with a
   single API call. RGB contract state is represented as a JSON object and
   can be serialized across different languages without a hassle.
 
-- ### Simplified UX
+- #### Simplified UX
   Previously, to use RGB, a wallet or a user had to run the RGB Node, interface
   it through RPC (or cli tool) - and use a number of other libs and command-line 
   tools to perform most of the operations on PSBTs etc. With the new release 

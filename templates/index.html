@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% block social_media %}
+    <meta property="og:title" content="RGB protocol" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="{{ section.description }}">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+{% endblock social_media %}
+
 {% block content %}
     <header class="mt3 mb6 w-100 mw-none ph3 mw8-m mw9-l center">
         <div class="flex flex-column flex-row-l">
