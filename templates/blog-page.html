@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block social_media %}
+    <meta name="description" content="{{ page.description }}">
+
     <meta property="og:title" content="{{ page.title }}" />
     <meta property="og:type" content="article" />
     {%- for author in page.authors %}
@@ -21,7 +23,7 @@
 {% block content %}
 <section class="section-white"><div>
     <header class="pb0">
-        <h1>{{ page.title }}</h1>
+        <h1 id="title">{{ page.title }}</h1>
         <p class="blog-date"><strong>{{ page.date }}</strong></p>
         <div class="highlight"></div>
     </header>
