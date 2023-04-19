@@ -18,12 +18,12 @@ first type of consignments, leaving the second for a next chapter.
 RGB stores all data required for its operations in a storage called **stash**.
 Since RGB is not a blockchain-based smart contracts, the stash is not replicated
 to other peer machines and usually keeps the data which nobody else than you
-know or have access to (at least to some of those data). Thus, loosing stash
+know or have access to (at least to some of those data). Thus, losing stash
 means loosing your assets and contract state, and it has to be backed up with
-the same effort as a seed phrase or wallet descriptor for a complex wallet 
+the same effort as a seed phrase or wallet descriptor for a complex wallet
 setup.
 
-To import a contract into your stash one first needs to get a contract 
+To import a contract into your stash one first needs to get a contract
 consignment from a contract issuer. A contract consignment is either a binary
 file – or an ASCII/Base64-armoded text (and example can be found it the
 ["issuing contract" section](/power-user/#issue)).
@@ -44,7 +44,7 @@ Which should output something like
 ```
 Schemata:
 ---------
-marina-karl-basic-4h3xkAmiRdQs2HwQmnFVqoj5DG3NhGkJRpNZXjNrJT2N: RGB20 
+marina-karl-basic-4h3xkAmiRdQs2HwQmnFVqoj5DG3NhGkJRpNZXjNrJT2N: RGB20
 
 Interfaces:
 ---------
@@ -55,7 +55,7 @@ Contracts:
 rgb:BasilYellowGrand0BgHH3yYaCUvaw5Tc8KfrVB1aWN4vBvCXCuMfK98N3o6Z
 ```
 
-Here you see your imported contract id, plus a schema, used by this contract 
+Here you see your imported contract id, plus a schema, used by this contract
 which implements RGB20 interface. Now, you can read the state of the contract
 through this interface:
 
@@ -71,6 +71,6 @@ Owned state:
   (amount=100000000000000, owner=913d9a55efd7748ee89b577328a8f22189432c04275a106c4915cd1dac543562:0, witness=~)
 ```
 
-Here you see that the contract has both global state, representing the 
+Here you see that the contract has both global state, representing the
 information about RGB20 token, and an owned state – certain amount of that token
 assigned to a UTXO.
