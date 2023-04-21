@@ -39,8 +39,8 @@ Here:
 - **`$ACTION`** is the name of the operation which should be performed by the
   actor. If it is skipped, it defaults to an operation which declared in the
   used interface as "default".
-- **`$STATE`** provides an information about the state, which should be 
-  transferred to the beneficiary single-use-seal defined in the `$SEAL` 
+- **`$STATE`** provides an information about the state, which should be
+  transferred to the beneficiary single-use-seal defined in the `$SEAL`
   parameter. The state mast match state type for the given action, for instance,
   for a transfer of a fungible token it must be an integer specifying amount
   of smallest token denominations to be transferred.
@@ -72,7 +72,7 @@ To learn more about invoices please refer to [RGB FAQ Website](https://rgbfaq.co
 
 To perform a state transfer *Bob* has to receive an invoice from *Alice*.
 We assume that *Bob* has some command-line wallet tool, which is able to
-construct, sing and publish normal bitcoin transactions (we will represent
+construct, sign and publish normal bitcoin transactions (we will represent
 this tool with a `wallet` command).
 
 At the first stage, Bob constructs PSBT file, which must spend outputs
@@ -87,7 +87,7 @@ bob$ rgb transfer tx.psbt $INVOICE consignment.rgb
 ```
 
 The result transfer consignment will be stored to `consignment.rgb` file in a
-binary form. Bob shoul send this file to Alice by some third-party means - this
+binary form. Bob should send this file to Alice by some third-party means - this
 can be an e-mail, some file server – or one of existing RGB-related protocols,
 like RGB-RPC, Storm (no Lightning network) or something else.
 
@@ -105,7 +105,7 @@ that the terminal witness transaction is not yet mined. This is due to the fact
 that Bob hasn't yet published his transaction yet, since he is waiting on Alice
 approval that she is happy with the transfer.
 
-Upon adding transfer consgnment to the stash command will return a signature
+Upon adding transfer consignment to the stash command will return a signature
 over the consignment, which Alice can send back to Bob as a form of payslip.
 
 Bob can now check Alice's signature, sign and publish his transaction:

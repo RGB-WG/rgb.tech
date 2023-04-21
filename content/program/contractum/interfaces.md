@@ -18,16 +18,16 @@ interface FungibleToken:
                            -- the "Ticker" name
    global Name -> String
 
-   -- amount of the issued asset must be a owned state which should be 
-   -- accessible to all contract participats, hence it is `public`
+   -- amount of the issued asset must be a owned state which should be
+   -- accessible to all contract participants, hence it is `public`
    owned public Inflation :: Zk64
    owned Asset :: Zk64
 
    op Issue :: Inflation -> [Asset]?, Inflation? -- and operations
    op Transfer :: {Asset} -> [Asset]
 
--- Specific schema state may use different naming, for instance because a 
--- schema can define multiple assets with different names; in that case we 
+-- Specific schema state may use different naming, for instance because a
+-- schema can define multiple assets with different names; in that case we
 -- will have multiple interface implementations referencing different state.
 implement FungibleToken for DecentralizedIdentity
    global Ticker := IOYTicker -- this creates a _binding_ of the state defined
@@ -38,7 +38,7 @@ implement FungibleToken for DecentralizedIdentity
    owned Asset := IOYTokens
    op Issue := Promise
    op Transfer -- here we skip `:=` part since the interface operation name
-               -- matches the name used in the schema. In such cases we can 
+               -- matches the name used in the schema. In such cases we can
                -- also skip the declaration at whole
 ```
 
