@@ -17,7 +17,7 @@ use [BDK integration](https://github.com/RGB-Tools/) developed by Bitfinex team.
 
 You can read more about RGB v0.10 functionality in our [previous announcement][RGB v0.10].
 Release notes and source code can be found at 
-https://github.com/RGB-WG/rgb/releases/tag/v0.10.0
+<https://github.com/RGB-WG/rgb/releases/tag/v0.10.0>
 
 Contributors
 ------------
