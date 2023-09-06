@@ -18,10 +18,10 @@ are kept inside taproot tree and not directly visible on-chain.
 Such approach also allows RGB to operate on top of the Lightning network, since
 it can work with any bitcoin transaction, including transactions incorporated
 into a channel. RGB scripts and state fully exists in the client-side world,
-not seen from outside (hence privacy) - and not required to be validated by
+not seen from outside (hence privacy) - and are not required to be validated by
 anyone else than the contract participants (hence scalability).
 
-RGB makes bitcoin to pass beyond limitations of [CIA triad] via achieving
+RGB allows Bitcoin to pass beyond the limitations of [CIA triad] via achieving
 different properties on different layers:
 * **Blockchain** provides integrity & availability;
 * **Lightning network** – integrity & confidentiality;
