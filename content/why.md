@@ -13,11 +13,11 @@ title = "Why RGB?"
 
   No chain analysis is possible due to the absence of a transaction graph in 
   blockchain. RGB uses zero-knowledge to protect the history of a fungible state.
-  With RGB, user is always in-charge what and when to disclosure parts of the 
-  history and state, if needed.
+  With RGB, the user is always in-charge of when, and what parts of the 
+  history and state to disclose, if needed.
 
 * ### Bitcoin & Lightning
 
-  RGB is a native member of Bitcoin and Lightning network ecosystem, bringing
+  RGB is a native member of Bitcoin and the Lightning Network ecosystem, bringing
   rich smart contracts in a scalable way to the World's most secure and
   censorship-resistant cryptocurrency.
