@@ -18,7 +18,7 @@ Check out the following guides:
 * ### Integrating RGB
 
   Want to let your users access RGB assets & smart contracts?
-  Integrating RGB is simple as using one of existing SDKs in your project and
+  Integrating RGB as is simple as using one of existing SDK's in your project and
   working with JSON data structures. Check what libraries exist for RGB
   integration today, provided by several independent teams and companies.
 
@@ -28,7 +28,7 @@ Check out the following guides:
 
   RGB is much more complex than simple bitcoin applications; to unlock its true
   power in creating the world of Bitcoin Finance (#BiFi) it is important
-  to understand its terminology and internal architecture in details. A good
+  to understand its terminology and internal architecture in detail. A good
   starting point can be through multiple RGB learning resources.
 
   <a href="/docs" class="button button-secondary">Access docs</a>
