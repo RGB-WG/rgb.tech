@@ -18,7 +18,7 @@ Check out the following guides:
 * ### Integrating RGB
 
   Want to let your users access RGB assets & smart contracts?
-  Integrating RGB as is simple as using one of existing SDK's in your project and
+  Integrating RGB as is simple as using one of existing SDKs in your project and
   working with JSON data structures. Check what libraries exist for RGB
   integration today, provided by several independent teams and companies.
 
