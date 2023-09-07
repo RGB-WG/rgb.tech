@@ -7,18 +7,18 @@ anchor = "wallets"
 bg-color = "green"
 +++
 
-RGB wallets are developed by community and independent vendors. Please keep
+RGB wallets are developed by the community and independent vendors. Please keep
 in mind that there is no "official" RGB GUI wallet.
 
-**NB: All existing wallets were not yet updated to the latest RGB protocol
-version v0.10 and are not compatible with the modern RGB contracts. If you are
-interested in trying the new RGB v0.10 features please use [command-line tool].**
+**NB: All existing wallets are not yet updated to the latest RGB protocol
+version v0.10 and are not compatible with modern RGB contracts. If you are
+interested in trying the new RGB v0.10 features please use the [command-line tool].**
 
 * ### [MyCitadel](https://mycitadel.io)
 
-  The first GUI wallet supporting RGB, created back in 2021 by people who
-  developed RGB. It provides cross-platform desktop wallet and iOS/iPad
-  wallet. Mobile wallet allows to work with fungible RGB assets.
+  The first GUI wallet supporting RGB, was created back in 2021 by people who
+  developed RGB. It provides a cross-platform desktop wallet and an iOS/iPad
+  wallet. Mobile wallets are able to work with fungible RGB assets.
 
 * ### [BitMask](https://bitmask.app)
 
@@ -28,7 +28,7 @@ interested in trying the new RGB v0.10 features please use [command-line tool].*
 
 * ### [Iris](https://play.google.com/store/apps/details?id=com.iriswallet.testnet&pli=1)
 
-  The first Android wallet made by team at [Bitfinex](https://bitfinex.com)
+  The first Android wallet made by the team at [Bitfinex](https://bitfinex.com)
   working on RGB integration and RGB-related tools. Supports both fungible
   and non-fungible assets.
 
