@@ -8,15 +8,15 @@ multicolumn = true
 
 * ### Black paper
 
-  Unlike an ICO "whitepaper", RGB blackpaper systematically explains RGB, its
-  capabilities and most important applications without shilling any tokens.
+  Unlike an ICO "whitepaper", the RGB blackpaper systematically explains RGB, its
+  capabilities, applications and most importantly, does not shill any tokens.
 
   <a href="https://blackpaper.rgb.tech" class="button button-secondary" target="_blank">Read blackpaper</a>
 
 * ### Yellow paper
 
   Yellow paper gives a formal description of RGB system in terms of distributed
-  computing and computer science. It is work-in-progress and will be released
+  computing and computer science. It is a work-in-progress and will be released
   later this year.
 
 * ### LNP/BP Standards
