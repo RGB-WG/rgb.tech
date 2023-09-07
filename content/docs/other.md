@@ -20,6 +20,6 @@ multicolumn = true
 
 * ### Contractum
 
-  Contractum is declarative programming language for smart contracts.
+  Contractum is a declarative programming language for smart contracts.
 
   <a href="https://www.contractum.org" class="button button-secondary" target="_blank">Contractum website</a>
