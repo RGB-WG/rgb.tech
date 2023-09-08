@@ -16,7 +16,7 @@ multicolumn = true
 
 * ### Videos
 
-  Over the years we have made hundreds of videos, which not just explain RGB, but
+  Over the years we have made hundreds of videos, which go beyond explaining RGB, and
   reveal the whole history of its design and development.
 
   <a href="https://youtube.com/LNP-BP" class="button button-secondary">Watch videos</a>

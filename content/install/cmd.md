@@ -7,7 +7,7 @@ bg-color = "green"
 +++
 
 The main command-line tool to work with RGB smart contracts is `rgb`. It is written
-in Rust programming language and open-sourced under Apache 2.0 license.
+in Rust programming language and is open-sourced under Apache 2.0 license.
 The tool provides complete RGB functionality locally, not requiring any node
 or server connection outside of Electrum server.
 
@@ -52,7 +52,7 @@ $ cargo install rgb-contracts --all-features --version 0.10.0
 ```
 
 
-### Building from sources
+### Building from source
 
 By building from the master tip you can get the latest nightly version of
 `rgb`. Otherwise, you can check [one of our release tags](https://github.com/RGB-WG/rgb/tags).
