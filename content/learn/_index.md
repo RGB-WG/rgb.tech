@@ -6,7 +6,7 @@ multicolumn = true
 
 RGB is a scalable & confidential smart contracts system for Bitcoin & lightning
 network developed by the [LNP/BP Association](https://www.lnp-bp.org). It 
-embraces concept of private & mutual ownership and is a "post-blockchain", 
+embraces the concept of private & mutual ownership and is a "post-blockchain", 
 Turing-complete form of trustless distributed computing which does not require 
 introduction of tokens.
 
@@ -58,8 +58,8 @@ introduction of tokens.
 
   Simple RGB contracts can be created in **Rust** (using handy macros).
   More advanced contracts will require writing code for **AluVM** in
-  **AluAssembly language**. We also work on a new high-level language called
-  **Contractum**, which release is targeted towards the end of the year.
+  **AluAssembly language**. We are also working on a new high-level language called
+  **Contractum**, the release of which is targeted towards the end of the year.
 
   <a href="/program" class="button button-secondary">Learn to program</a>
 
