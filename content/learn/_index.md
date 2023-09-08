@@ -63,6 +63,6 @@ introduction of tokens.
 
   <a href="/program" class="button button-secondary">Learn to program</a>
 
-[FAQ]: https://rgbfaq.com
+[FAQ]: https://www.rgbfaq.com
 [YouTube channel]: https://youtube.com/LNP-BP
 [RGB whitepaper]: https://blackpaper.rgb.tech
