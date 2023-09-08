@@ -43,7 +43,7 @@ from [LNP/BP Standards Association][lnpbp], [Pandora Prime][pandora],
 * [UkolovaOlga](https://github.com/UkolovaOlga)
 * [giacomozucco](https://github.com/giacomozucco)
 
-[RGB v0.10]: /blog/release-v0.10
+[RGB v0.10]: /blog/release-v0-10/
 [MyCitadel]: https://mycitadel.io
 [Iris]: https://iriswallet.com
 [BitMask]: https://bitmask.app
