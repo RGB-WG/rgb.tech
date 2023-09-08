@@ -11,7 +11,7 @@ multicolumn = true
   RGB FAQ is an external resource maintained by our team which gives a 
   high-level introduction into RGB and provides a detailed glossary.
 
-  <a href="https://rgbfaq.com" class="button button-secondary">Visit FAQ website</a>
+  <a href="https://www.rgbfaq.com" class="button button-secondary">Visit FAQ website</a>
 
 
 * ### Videos
