@@ -5,14 +5,14 @@ title = "Writing simple contract"
 anchor = "basics"
 +++
 
-Firstly, using cargo to create a new project: `cargo new rgb20-usdt`, and enter
-it: `cd rgb20-usdt`. Then create a directory to store the contract file. You may
+Firstly, using cargo to create a new project: `cargo new rgb20-token`, and enter
+it: `cd rgb20-token`. Then create a directory to store the contract file. You may
 name it whatever you like, here we set it to `contracts`: `mkdir contracts`.
-See source codes at [RGB20-USDT](https://github.com/oneforalone/rgb20-usdt).
+See source codes at [RGB20-Token](https://github.com/oneforalone/rgb20-usdt).
 
 Here is the complete project file tree:
 ```
-➜  rgb20-usdt git:(main) ✗ tree .
+➜  rgb20-token git:(main) ✗ tree .
 .
 ├── Cargo.lock
 ├── Cargo.toml
@@ -74,9 +74,9 @@ impl ResolveHeight for DumbResolver {
 
 #[rustfmt::skip]
 fn main() {
-    let name = "USDT";  // name of token
+    let name = "Token";  // name of token
     let decimal = Precision::CentiMicro; // Decimal: 8
-    let desc = "USD Tether Token";  // token description
+    let desc = "RGB Token";  // token description
     let spec = DivisibleAssetSpec::with("RGB20", name, decimal, Some(desc)).unwrap();
     let terms = RicardianContract::default();
     let contract_data = ContractData { terms, media: None };
@@ -108,9 +108,9 @@ fn main() {
 
     let bindle = contract.bindle();
     eprintln!("{bindle}");
-    bindle.save("contracts/rgb20-usdt.contract.rgb")
+    bindle.save("contracts/rgb20-token.contract.rgb")
         .expect("unable to save contract");
-    fs::write("contracts/rgb20-usdt.contract.rgba", bindle.to_string())
+    fs::write("contracts/rgb20-token.contract.rgba", bindle.to_string())
         .expect("unable to save contract");
 }
 
@@ -122,4 +122,4 @@ description, beneficiary and supply by modifing corresponding variable's value,
 as well as contracts saving fold.
 
 Now, you can import the contract with `rgb import` command:
-`rgb import contracts/rgb20-usdt.contract.rgb`.
+`rgb import contracts/rgb20-token.contract.rgb`.
