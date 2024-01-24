@@ -25,4 +25,4 @@ to this schema.
 * <a href="#iimpl" class="button button-secondary">Implementing interface</a>
 
 Sample project providing the source code from this chapter can be found in
-[examples directory of RGB smart contract compiler repository](https://github.com/RGB-WG/rgb-schemata/blob/master/examples/rgb20-token.rs).
+[examples directory of RGB smart contract compiler repository](https://github.com/RGB-WG/rgb-schemata/blob/master/examples/rgb20.rs).
