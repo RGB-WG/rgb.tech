@@ -15,7 +15,7 @@ and deployment of fast-forward changes to the consensus level is performed by
 
 Consensus level includes a set of RGB-related standards, also maintained by
 the LNP/BP Standards Association, named **LNPBPs**. They can be found in the
-[standards repository](LNPBPs), which contains also description for the 
+[standards repository][LNPBPs], which contains also description for the 
 standardization process and acceptance of the standard proofs & improvements.
 
 **It is strictly not recommended to use any alternative implementations of
