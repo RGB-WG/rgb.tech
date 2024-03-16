@@ -7,10 +7,11 @@ anchor = "basics"
 
 Firstly, using cargo to create a new project: `cargo new rgb20-token`, and enter
 it: `cd rgb20-token`. Then create a directory to store the contract file. You may
-name it whatever you like, here we set it to `contracts`: `mkdir contracts`.
-See source codes at [RGB20-Token](https://github.com/oneforalone/rgb20-usdt).
+name it whatever you like, here we set it to `examples`: `mkdir examples`.
+See source codes at [RGB20 Contract](https://github.com/bitlightlabs/bitlight-rgb20-contract).
 
 Here is the complete project file tree:
+
 ```
 ➜  rgb20-token git:(main) ✗ tree .
 .
@@ -26,100 +27,127 @@ Here is the complete project file tree:
 Secondly, we add some libs in `Cargo.toml` file:
 
 ```toml
-[denpendencies]
-amplify = "4.0.1"
-strict_encoding = "2.5.0"
-strict_types = "1.6.1"
-bp-core = "0.10.9"
-rgb-std = { version = "0.10.8", features = ["serde", "fs"] }
-serde = "1.0.152"
-serde_json = "1.0.93"
-rgb-schemata = "0.10.0"
+[package]
+name = "rgb20-token"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+[dependencies]
+amplify = "4.6.0"
+ascii-armor = "0.2.0"
+strict_encoding = "2.7.0-beta.1"
+strict_types = "2.7.0-beta.1"
+aluvm = { version = "0.11.0-beta.4", features = ["log"] }
+bp-core = "0.11.0-beta.4"
+rgb-std = { version = "0.11.0-beta.4", features = ["serde", "fs"] }
+serde = "1.0"
+serde_json = "1.0"
+sha2 = "0.10.8"
+rgb-schemata = "0.11.0-beta.4"
+hex = "0.4.3"
+
+[dev-dependencies]
+chrono = "0.4.31"
+serde_yaml = "0.9.27"
+
+[features]
+all = []
+
+[patch.crates-io]
+commit_verify = { git = "https://github.com/LNP-BP/client_side_validation", branch = "master" }
+bp-consensus = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
+bp-dbc = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
+bp-seals = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
+bp-core = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
+rgb-core = { git = "https://github.com/RGB-WG/rgb-core", branch = "master" }
+rgb-std = { git = "https://github.com/RGB-WG/rgb-std", branch = "master" }
+rgb-schemata = { git = "https://github.com/RGB-WG/rgb-schemata", branch = "master" }
 ```
 
 Then, in `src/main.rs`, write following codes:
 
 ```rust
-use rgbstd::interface::{rgb20, ContractBuilder};
-
 use std::convert::Infallible;
 use std::fs;
 
 use amplify::hex::FromHex;
-use bp::{Chain, Outpoint, Tx, Txid};
-use rgb_schemata::{nia_rgb20, nia_schema};
-use rgbstd::containers::BindleContent;
-use rgbstd::contract::WitnessOrd;
+use armor::AsciiArmor;
+use bp::dbc::Method;
+use bp::{Outpoint, Txid};
+use rgb_schemata::NonInflatableAsset;
+use rgbstd::containers::FileContent;
+use rgbstd::interface::{FilterIncludeAll, FungibleAllocation, IfaceClass, IssuerClass, Rgb20};
+use rgbstd::invoice::Precision;
+use rgbstd::persistence::{Inventory, Stock};
 use rgbstd::resolvers::ResolveHeight;
-use rgbstd::stl::{
-    Amount, ContractData, DivisibleAssetSpec, Precision, RicardianContract, Timestamp,
-};
-use rgbstd::validation::{ResolveTx, TxResolverError};
+use rgbstd::validation::{ResolveWitness, WitnessResolverError};
+use rgbstd::{WitnessAnchor, WitnessId, XAnchor, XPubWitness};
 use strict_encoding::StrictDumb;
 
 struct DumbResolver;
 
-impl ResolveTx for DumbResolver {
-    fn resolve_tx(&self, _txid: Txid) -> Result<Tx, TxResolverError> {
-        Ok(Tx::strict_dumb())
+impl ResolveWitness for DumbResolver {
+    fn resolve_pub_witness(&self, _: WitnessId) -> Result<XPubWitness, WitnessResolverError> {
+        Ok(XPubWitness::strict_dumb())
     }
 }
 
 impl ResolveHeight for DumbResolver {
     type Error = Infallible;
-    fn resolve_height(&mut self, _txid: Txid) -> Result<WitnessOrd, Self::Error> {
-        Ok(WitnessOrd::OffChain)
+    fn resolve_anchor(&mut self, _: &XAnchor) -> Result<WitnessAnchor, Self::Error> {
+        Ok(WitnessAnchor::strict_dumb())
     }
 }
 
 #[rustfmt::skip]
 fn main() {
-    let name = "Token";  // name of token
-    let decimal = Precision::CentiMicro; // Decimal: 8
-    let desc = "RGB Token";  // token description
-    let spec = DivisibleAssetSpec::with("RGB20", name, decimal, Some(desc)).unwrap();
-    let terms = RicardianContract::default();
-    let contract_data = ContractData { terms, media: None };
-    let created = Timestamp::now();
-    let txid = "9fef7f1c9cd1dd6b9ac5c0a050103ad874346d4fdb7bcf954de2dfe64dd2ce05";
-    // token owner address in utxo
-    let beneficiary = Outpoint::new(Txid::from_hex(txid).unwrap(), 0);
+    let beneficiary_txid =
+        Txid::from_hex("d6afd1233f2c3a7228ae2f07d64b2091db0d66f2e8ef169cf01217617f51b8fb").unwrap();
+    let beneficiary = Outpoint::new(beneficiary_txid, 1);
 
-    const ISSUE: u64 = 1_000_000_000;
-
-    let contract = ContractBuilder::with(rgb20(), nia_schema(), nia_rgb20())
-        .expect("schema fails to implement RGB20 interface")
-        .set_chain(Chain::Testnet3)
-        .add_global_state("spec", spec)
-        .expect("invalid nominal")
-        .add_global_state("created", created)
-        .expect("invalid creation date")
-        .add_global_state("issuedSupply", Amount::from(ISSUE))
-        .expect("invalid issued supply")
-        .add_global_state("data", contract_data)
-        .expect("invalid contract text")
-        .add_fungible_state("assetOwner", beneficiary, ISSUE)
-        .expect("invalid asset amount")
+    let contract = NonInflatableAsset::testnet("TEST", "Test asset", None, Precision::CentiMicro)
+        .expect("invalid contract data")
+        .allocate(Method::TapretFirst, beneficiary, 100_000_000_000_u64.into())
+        .expect("invalid allocations")
         .issue_contract()
-        .expect("contract doesn't fit schema requirements");
+        .expect("invalid contract data");
 
     let contract_id = contract.contract_id();
-    debug_assert_eq!(contract_id, contract.contract_id());
 
-    let bindle = contract.bindle();
-    eprintln!("{bindle}");
-    bindle.save("contracts/rgb20-token.contract.rgb")
-        .expect("unable to save contract");
-    fs::write("contracts/rgb20-token.contract.rgba", bindle.to_string())
-        .expect("unable to save contract");
+    eprintln!("{contract}");
+    contract.save_file("examples/rgb20-simplest.rgb").expect("unable to save contract");
+    fs::write("examples/rgb20-simplest.rgba", contract.to_ascii_armored_string()).expect("unable to save contract");
+
+    // Let's create some stock - an in-memory stash and inventory around it:
+    let mut stock = Stock::default();
+    stock.import_iface(Rgb20::iface()).unwrap();
+    stock.import_schema(NonInflatableAsset::schema()).unwrap();
+    stock.import_iface_impl(NonInflatableAsset::issue_impl()).unwrap();
+
+    stock.import_contract(contract, &mut DumbResolver).unwrap();
+
+    // Reading contract state through the interface from the stock:
+    let contract = stock.contract_iface_id(contract_id, Rgb20::iface().iface_id()).unwrap();
+    let contract = Rgb20::from(contract);
+    let allocations = contract.fungible("assetOwner", &FilterIncludeAll).unwrap();
+    eprintln!("\nThe issued contract data:");
+    eprintln!("{}", serde_json::to_string(&contract.spec()).unwrap());
+
+    for FungibleAllocation  { seal, state, witness, .. } in allocations {
+        eprintln!("amount={state}, owner={seal}, witness={witness}");
+    }
+    eprintln!("totalSupply={}", contract.total_supply());
+    eprintln!("created={}", contract.created().to_local().unwrap());
 }
+
 
 ```
 
 Save it, and execute `cargo run`, after that, contract file would save in
-`contracts` directory. You can specify your own token name, decimal,
+`examples` directory. You can specify your own token name, decimal,
 description, beneficiary and supply by modifing corresponding variable's value,
 as well as contracts saving fold.
 
 Now, you can import the contract with `rgb import` command:
-`rgb import contracts/rgb20-token.contract.rgb`.
+`rgb import examples/rgb20-simplest.rgb`.
