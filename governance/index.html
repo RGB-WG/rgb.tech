@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>RGB smart contracts</title>
+  <link rel="stylesheet" href="/tachyons-ext.css">
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/front.css">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  
+    <meta name="description" content="">
+
+    <meta property="og:title" content="Governance" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+
+</head>
+
+<body>
+<nav class="flex flex-row justify-center justify-end-l items-center flex-wrap ph2 pl3-ns pr3-ns pb3">
+  <div id="logo" class="flex-auto w-100 w-auto-l self-start self-center tc tl-l">
+    <a href="/">
+      <img alt="RGB Logo" src="/logo/rgb-symbol-color.svg">
+    </a>
+  </div>
+  <ul class="nav list w-100 w-auto-l flex flex-none flex-row flex-wrap justify-center justify-end-l items-center pv2 ph0 ph4-ns">
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/install">Install</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/learn">Learn</a></li>
+    <!-- li class="tc pv2 ph2 ph4-ns flex-20-s">Tools</li -->
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/governance">Governance</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="https://t.me/rgbtelegram">Community</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/blog">Blog</a></li>
+  </ul>
+</nav>
+<main>
+  
+    
+    
+        
+    
+    <section class="section-white ">
+        <div>
+            <header class="pb0">
+                <h1 id="title">Governance</h1>
+            </header>
+
+            <p>Unlike in blockchain smart contract systems, where blockchain governance 
+severely affects contract governance (contract transactions can be rolled back),
+in RGB the client-side validation contracts are <strong>immutable</strong>, fully governed 
+according to the terms specified by contract issuers in contract genesis &amp; 
+schema and can't be changed/updated via changes to the RGB protocol stack.</p>
+<h3 id="blockchain-governance-model">Blockchain governance model</h3>
+<p><img src="https://rgb.tech/governance/governance-blockchain.png" alt="Blockchain governance" /></p>
+<h3 id="rgb-governance-model">RGB governance model</h3>
+<p><img src="https://rgb.tech/governance/governance-rgb.png" alt="RGB governance" /></p>
+<p>RGB is a stack of protocols abstracted into a layered design with different
+governance structures and update policies:</p>
+<p><img src="https://rgb.tech/governance/governance-layers.svg" alt="Governance layers" /></p>
+
+        </div>
+    </section>
+        
+            
+        
+        
+            
+        
+        <section class="section-red ">
+            <div>
+                <header  class="pb0">
+                    <h2>Consensus &amp; standards</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>The bottom level of RGB is the <strong>consensus layer</strong>, which is designed as an
+immutable protocol targeted for consensus level ossification.</p>
+<p>Before the ossification happens all changes to RGB must be backward-compatible;
+such changes for client-side-validation are named <em>fast-forwards</em>. Development
+and deployment of fast-forward changes to the consensus level is performed by
+<a href="https://lnp-bp.org"><strong>LNP/BP Standards Association</strong></a>.</p>
+<p>Consensus level includes a set of RGB-related standards, also maintained by
+the LNP/BP Standards Association, named <strong>LNPBPs</strong>. They can be found in the
+<a href="https://github.com/LNP-BP/LNPBPs">standards repository</a>, which contains also description for the 
+standardization process and acceptance of the standard proofs &amp; improvements.</p>
+<p><strong>It is strictly not recommended to use any alternative implementations of
+the RGB consensus level</strong>.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-purple ">
+            <div>
+                <header  class="pb0">
+                    <h2>Standard libraries</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Standard libraries is the lowest level for integration of RGB into other 
+software. Changes in standard libraries do not affect the safety of RGB assets
+and security of contracts, however may break software compatibility. Thus,
+this layer is maintained by [LNP/BP Standards Association][LNP/BP], which<br />
+ensures gradual changes and stability of APIs, alongside their improvements.</p>
+<p>Standard libraries include:</p>
+<ul>
+<li><strong>RGB standard library</strong></li>
+<li><strong>RGB data type library</strong></li>
+<li><strong>RGB AluVM libraries</strong></li>
+</ul>
+<p>Since the code in standard libraries may be used for a deep-level hacks,
+it is recommended that all users of RGB interact with the system via standard
+libraries reviewd by <a href="https://rgb.tech/governance/stdlibs/RGB-WG">RGB working group</a> of LNP/BP Standards 
+Association.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-green ">
+            <div>
+                <header  class="pb0">
+                    <h2>Wallet libraries</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Wallet libraries provide functionality such as constructing and processing RGB
+invoices, working with PSBT files containing RGB or other client-side-validated
+commitments, analyzing bitcoin and tapret wallet descriptors. While a reference
+implementation of RGB wallet library is provided by 
+<a href="https://rgb.tech/governance/walletlibs/LNP/BP">LNP/BP Standards Association</a> written in Rust, other implementations 
+may be used, based on different bitcoin wallet solutions (like BDK) or done
+in other languages.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-white ">
+            <div>
+                <header  class="pb0">
+                    <h2>Dev tools &amp; languages</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Developers use the RGB toolchain, which include compilers, linkers and packet
+managers. <a href="https://rgb.tech/governance/tools/LNP/BP">LNP/BP Standard Association</a> currently develops and will be
+maintaining one of toolchain implementations, which include the <strong>Contractum
+language</strong> compiler and packager; however alternative toolchains may be
+independently created and used by other providers.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-purple ">
+            <div>
+                <header  class="pb0">
+                    <h2>Node &amp; command-line</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>RGB command-line tool and RGB node are two main user-facing tools which can
+be used by power users of RGB on desktops and server-side. They are developed 
+and maintained by the <a href="https://rgb.tech/governance/binaries/LNP/BP">LNP/BP Standards Association</a>, but it is advised
+that alternative implementations will be written by independent bodies. These
+implementations may be audited by the Association to ensure compatibility.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-green ">
+            <div>
+                <header  class="pb0">
+                    <h2>Interfaces</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Contract interfaces define an API between smart contracts and software (wallets,
+exchanges), allowing semantic-aware user interaction with arbitrary contracts.</p>
+<p><a href="https://www.lnp-bp.org">LNP/BP Standards Association</a> maintains <a href="https://github.com/LNP-BP/LNPBPs">standards</a> and the 
+registry for most-common used interfaces, named RGB-20, 21, 22 etc., however
+for independent vendors it is optional whether they'd like to standardize 
+custom interfaces. Standardization of interfaces doesn't affect wallet 
+compatibility; RGB standard libraries provide a way to work with any interfaces,
+even non-standard ones.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-red ">
+            <div>
+                <header  class="pb0">
+                    <h2>Contracts &amp; schemata</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Any independent party may issue an RGB contract or develop an RGB schema, which
+provides the business logic sharable by multiple contracts. No organization 
+should standardize schemata and contracts; however an independent registry or
+safety scoring may exist. No governance is applied to this layer.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-white ">
+            <div>
+                <header  class="pb0">
+                    <h2>LNP&#x2F;BP Standards Association</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>This organization plays an important role in bootstrapping RGB adoption and
+development of the RGB ecosystem. It runs as a Swiss non-profit association under
+article 40 of Swiss Civil Codex and governed by its members and member-elected
+persons. For the details of organization governance please refer to the
+<a href="https://rgb.tech/governance/association/LNP/BP">official website</a>.</p>
+
+            </div>
+        </section>
+    
+</main>
+
+<footer><div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
+  <div class="flex flex-column flex-row-ns pv0-l">
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Get help!</h4>
+      <ul>
+        <li><a href="http://rgbfaq.com">RGB FAQ</a></li>
+        <li><a href="https://blackpaper.rgb.tech">White paper</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="https://standards.lnp-bp.org">Standards</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Terms and policies</h4>
+      <ul>
+        <li><a href="/policies/licenses">Licenses</a></li>
+        <li><a href="/policies/logo-policy-and-media-guide/">Logo Policy and Media Guide</a></li>
+        <li><a href="/policies/security">Security Disclosures</a></li>
+        <li><a href="/policies/privacy-policy/">Privacy Notice</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Social</h4>
+      <div class="flex flex-row flex-wrap">
+        <a href="https://twitter.com/lnp_bp"><img src="/social/twitter.svg" alt="twitter logo" title="Twitter"></a>
+        <a href="https://www.youtube.com/LNP-BP"><img class="pv2" src="/social/youtube.svg" alt="youtube logo" title="YouTube"></a>
+        <a href="https://reddit.com/r/RGB_protocol"><img src="/social/reddit.svg" alt="discord logo" title="Discord"></a>
+        <a href="https://github.com/RGB-WG"><img src="/social/github.svg" alt="github logo" title="GitHub"></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="attribution">
+    <p>
+      Maintained by the <a href="https://www.lnp-bp.org">LNP/BP Standards Association</a>. See a bug?
+      <a href="https://github.com/RGB-WG/rgb.tech/issues/new">File an issue!</a>
+    </p>
+    <p>Uses layout &amp; styles from <a href="https://github.com/rust-lang/www.rust-lang.org" target="_blank">Rust Language website</a></p>
+  </div>
+</div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>RGB smart contracts</title>
+  <link rel="stylesheet" href="/tachyons-ext.css">
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/front.css">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  
+    <meta name="description" content="">
+
+    <meta property="og:title" content="Program RGB" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+
+</head>
+
+<body>
+<nav class="flex flex-row justify-center justify-end-l items-center flex-wrap ph2 pl3-ns pr3-ns pb3">
+  <div id="logo" class="flex-auto w-100 w-auto-l self-start self-center tc tl-l">
+    <a href="/">
+      <img alt="RGB Logo" src="/logo/rgb-symbol-color.svg">
+    </a>
+  </div>
+  <ul class="nav list w-100 w-auto-l flex flex-none flex-row flex-wrap justify-center justify-end-l items-center pv2 ph0 ph4-ns">
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/install">Install</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/learn">Learn</a></li>
+    <!-- li class="tc pv2 ph2 ph4-ns flex-20-s">Tools</li -->
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/governance">Governance</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="https://t.me/rgbtelegram">Community</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/blog">Blog</a></li>
+  </ul>
+</nav>
+<main>
+  
+    
+    
+        
+    
+    <section class="section-white ">
+        <div>
+            <header class="pb0">
+                <h1 id="title">Program RGB</h1>
+            </header>
+
+            <p>RGB is a full-fledged smart contract system which operates on top of Bitcoin
+and Lightning network. If you think about blockchain as a settlement layer and
+Lightning as a scaling layer, <em>RGB is the programmability layer</em>, finally
+adding to the first and most censorship-resistant cryptographic-based store of
+value properties which were absent and desired for many years.</p>
+<p>RGB achieves this through a separation of abstraction layers: the bitcoin
+blockchain (layer 1) becomes a cryptographic commitment layer, which holds
+<em>no data</em> but compact commitments to the smart contract state, which is
+kept off-chain. These commitments do not occupy block space, since they
+are kept inside taproot tree and not directly visible on-chain.</p>
+<p>Such approach also allows RGB to operate on top of the Lightning network, since
+it can work with any bitcoin transaction, including transactions incorporated
+into a channel. RGB scripts and state fully exist in the client-side world, are
+not seen from the outside (hence privacy) - and are not required to be validated by
+anyone other than the contract participants (hence scalability).</p>
+<p>RGB allows Bitcoin to pass beyond the limitations of the <a href="https://www.coursera.org/articles/cia-triad">CIA triad</a> (confidentiality,
+integrity, and availability) by achieving different properties on different layers:</p>
+<ul>
+<li><strong>Blockchain</strong> provides integrity &amp; availability;</li>
+<li><strong>Lightning network</strong> – integrity &amp; confidentiality;</li>
+<li><strong>RGB</strong> – confidentiality &amp; availability.</li>
+</ul>
+
+        </div>
+    </section>
+        
+            
+        
+        
+            
+        
+        <section class="section-green ">
+            <div>
+                <header  class="pb0">
+                    <h2>Overview of RGB development</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Contract business logic in RGB is defined through so-called <em>schema</em>; the 
+specific RGB contract must implement some <em>schema</em>. One may think of a schema 
+as a &quot;class&quot; definition in the OOP world; in that terms, specific RGB contracts 
+are &quot;class instances&quot; created by the schema constructor (<em>genesis operation</em>). 
+Such approach allows to separate role of contract developer (in RGB called 
+<em>schema developer</em>) and <em>contract issuer</em>: the first one needs to be an 
+experienced developer, while the second one is not required to know anything 
+about coding or security at all. This also promotes re-use of common codebase by
+different issuers for the same typical use cases (like fungible assets), 
+reducing the risk of mistakes.</p>
+<p>RGB uses specially-designed virtual machine <a href="https://www.aluvm.org/">AluVM</a>, which is Turing-complete in
+the same terms as EVM and WASM-based smart contracts (i.e. nearly computational
+universal, but is bound by number of operation steps, measured by gas 
+consumption in Ethereum-like systems, and by accumulated computational 
+complexity measure in case of AluVM).</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-red li-columns">
+            <div>
+                <header  id="components"  class="pb0">
+                    <h2>Components</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>In RGB, there is no such thing as &quot;program a smart contract&quot;; instead, contracts
+themselves are issued with no code. This helps to simplify the life of asset 
+issuers and normies, who just need to issue a token, create their self-sovereign
+identity, run a DAO etc.</p>
+<p>This is achieved through separation of concerns, where the development work is
+kept outside contracts, thanks to things called <strong>schema</strong> and <strong>interface</strong>.</p>
+<ul>
+<li><h3 id="contract">Contract</h3>
+<p>The contract is a contract genesis plus a history of operations on the
+contract. Together they are used by RGB to compute a deterministic contract
+state. To create a contract means to issue a contract genesis, which 
+requires no code at all. The Contract issuer just needs to pick a <strong>schema</strong>
+which has all features needed in a contract – and use it during the 
+issuance. If the schema with the required properties doesn't exist, the issuer
+can hire a developer to implement such a schema.</p>
+</li>
+<li><h3 id="schema">Schema</h3>
+<p>If you think in terms of object-oriented programming (OOP), a contract is
+an <em>instance</em> of some <em>class</em>, and in RGB terms this <em>class</em> is named
+<strong>schema</strong>. Schema contains all the contract business logic, scripts, 
+definitions of state types (owned and global), allowed operations, rules
+for validation, data type system etc. Schema by its nature is declarative,
+it can be easily read or written with Rust macros, YAML, TOML and other
+declarative languages. Once created, a schema may be used by many contracts
+of the same type.</p>
+</li>
+<li><h3 id="interface">Interface</h3>
+<p>An interface defines how a user-facing software (wallets etc) can 
+interact with a contract. Interfaces provide <strong>semantic</strong> information about
+the contract and defines how its state can be presented to the user.
+If one can compare schema to a <em>class</em> in OOP, than <strong>contract interface</strong>
+should be compared to Java <em>interface</em> or Rust <em>trait</em>. As classes can
+implement interfaces in Java, or structs can implement traits in Rust,
+in RGB schema can implement many interfaces.</p>
+</li>
+</ul>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-purple li-columns">
+            <div>
+                <header  class="pb0">
+                    <h2>Ways to program RGB</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>Today, there are two main ways for programming RGB smart contracts: using
+rust-based RGB domain-specific language and with a specially-designed functional
+smart contract language named <strong>Contractum</strong>. Unlike many other blockchain-based
+smart contract systems, RGB also allows to create contracts without writing any
+code at all – even for complex contracts like NFTs, identities, DAOs etc.</p>
+<ul>
+<li><h3 id="zero-code-contracts">Zero-code contracts</h3>
+<p>Because of the use of contract schemata, most of RGB contract types can be
+issued without writing even a line of code. All you need is to find a schema
+and use command-line tools or GUI-based wallets to issue your contract.</p>
+<p><a href="/power-user/#issue" class="button button-secondary">Issue a contract with no code</a></p>
+</li>
+<li><h3 id="rgb-rust-dsl">RGB Rust DSL</h3>
+<p>The simplest way of creating a new RGB schema or interface is to use Rust. 
+You can directly compile arbitrary rust data to be part of RGB contract state,
+and you use macro-based DSL to define new schemata and interfaces. You can 
+export contracts, schema or interface into a binary form – or save them as 
+Base65-armored text for further distribution.</p>
+<p><a href="/program/rust" class="button button-secondary">Program RGB in Rust</a></p>
+</li>
+<li><h3 id="contractum">Contractum</h3>
+<p>Contractum is the forthcoming declarative language for writing safe and
+easy-to-audit smart contracts for RGB. Contractum is being under an active
+development and we plan to have it released by the end of the year. Today
+you may preview how writing RGB contracts in Contractum may look like in a
+future.</p>
+<p><a href="/program/contractum" class="button button-secondary">Preview Contractum</a></p>
+</li>
+</ul>
+
+            </div>
+        </section>
+    
+</main>
+
+<footer><div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
+  <div class="flex flex-column flex-row-ns pv0-l">
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Get help!</h4>
+      <ul>
+        <li><a href="http://rgbfaq.com">RGB FAQ</a></li>
+        <li><a href="https://blackpaper.rgb.tech">White paper</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="https://standards.lnp-bp.org">Standards</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Terms and policies</h4>
+      <ul>
+        <li><a href="/policies/licenses">Licenses</a></li>
+        <li><a href="/policies/logo-policy-and-media-guide/">Logo Policy and Media Guide</a></li>
+        <li><a href="/policies/security">Security Disclosures</a></li>
+        <li><a href="/policies/privacy-policy/">Privacy Notice</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Social</h4>
+      <div class="flex flex-row flex-wrap">
+        <a href="https://twitter.com/lnp_bp"><img src="/social/twitter.svg" alt="twitter logo" title="Twitter"></a>
+        <a href="https://www.youtube.com/LNP-BP"><img class="pv2" src="/social/youtube.svg" alt="youtube logo" title="YouTube"></a>
+        <a href="https://reddit.com/r/RGB_protocol"><img src="/social/reddit.svg" alt="discord logo" title="Discord"></a>
+        <a href="https://github.com/RGB-WG"><img src="/social/github.svg" alt="github logo" title="GitHub"></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="attribution">
+    <p>
+      Maintained by the <a href="https://www.lnp-bp.org">LNP/BP Standards Association</a>. See a bug?
+      <a href="https://github.com/RGB-WG/rgb.tech/issues/new">File an issue!</a>
+    </p>
+    <p>Uses layout &amp; styles from <a href="https://github.com/rust-lang/www.rust-lang.org" target="_blank">Rust Language website</a></p>
+  </div>
+</div>
+
+</footer>
+</body>
+
+</html>
