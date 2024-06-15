@@ -22,7 +22,7 @@ Before installing the RGB regtest environment, you need to install the component
 
 ## Getting Started
 
-Close repo [bitlightlabs/bitlight-local-env-public](https://github.com/bitlightlabs/bitlight-local-env-public)
+Clone repo [bitlightlabs/bitlight-local-env-public](https://github.com/bitlightlabs/bitlight-local-env-public)
 
 ```shell
 git clone git@github.com:bitlightlabs/bitlight-local-env-public.git
