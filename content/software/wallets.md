@@ -32,5 +32,12 @@ interested in trying the new RGB v0.10 features please use the [command-line too
   working on RGB integration and RGB-related tools. Supports both fungible
   and non-fungible assets.
 
+* ### [Bitlight](https://bitlightlabs.com/)
+
+  Supercharge your RGB journey as a Lightning strike.
+  [Bitlight Wallet](https://chromewebstore.google.com/detail/bitlight-wallet/fdojfgffiecmmppcjnahfgiignlnehap) is a cutting-edge solution for seamless Bitcoin and RGB transactions.
+  It offers advanced features like Taproot for enhanced privacy.
+  This non-custodial wallet ensures full control over your assets, directly within an intuitive interface.
+  Experience a new era of digital finance with unparalleled security and efficiency.
 
 [command-line tool]: /install#cmd
