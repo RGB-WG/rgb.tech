@@ -29,6 +29,15 @@ check the following resources:
 
   <a href="/docs#api" class="button button-secondary">API references</a>
 
+* ### Course
+
+  For those, who wants to become experts in RGB, a three-day dive-in course by
+  [Plan B Network][planb] is a must-to-watch series.
+  
+  <a href="https://planb.network" class="button button-secondary">Watch course</a>
+
+  
 [FAQ]: https://rgbfaq.com
 [YouTube channel]: https://youtube.com/LNP-BP
 [RGB whitepaper]: https://blackpaper.rgb.tech
+[planb]: https://planb.network
