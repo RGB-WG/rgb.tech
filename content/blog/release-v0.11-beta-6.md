@@ -239,7 +239,7 @@ In parallel, with support from [Bitfinex], we are starting working on audit and 
 of RGB, ensuring the system security and safety before the final release.
 
 We continue an ongoing effort of documenting RGB, and with beta 6 stabilizing consensus and standard
-APIs we plan to review, update and extend all existing documentation and prepare it for a reliease
+APIs we plan to review, update and extend all existing documentation and prepare it for a release
 alongside the v0.11.
 
 You can track us on our journey towards v0.11 release with this [GitHub dashboard][proj].

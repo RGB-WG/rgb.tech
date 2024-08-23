@@ -27,6 +27,7 @@ donations:
 
 ## Silver sponsors
 
+* [Bitlight Labs](https://bitlightlabs.com)
 * [DIBA](https://diba.io)
 * Max **** (anonymous)
 * Olga Ukolova

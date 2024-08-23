@@ -16,7 +16,7 @@ integrate RGB into your software, check out developer guidelines:
   **Contractum**, with its first version release targeting end of the year.
 
   <a href="/program" class="button button-secondary">Learn to program</a>
-
+  
 * ### Integrating RGB
 
   Want to let your users access RGB assets & smart contracts?
@@ -34,3 +34,10 @@ integrate RGB into your software, check out developer guidelines:
   starting point can be through multiple RGB learning resources.
   
   <a href="/docs" class="button button-secondary">Access docs</a>
+
+We highly recommend to watch [CSV 402: Introduction to RGB Programming][course] --
+a great three-day course by RGB creator, Dr Maxim Orlovsky and other protocol
+contributors, made for [Plan B Network][planb].
+
+[course]: https://planb.network/en/courses/csv402
+[planb]: https://planb.network
