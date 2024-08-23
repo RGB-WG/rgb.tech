@@ -32,5 +32,11 @@ interested in trying the new RGB v0.10 features please use the [command-line too
   working on RGB integration and RGB-related tools. Supports both fungible
   and non-fungible assets.
 
+* ### [Bitlight Wallet](https://bitlightlabs.com/wallet)
+
+  The first non-custodial Bitcoin wallet supporting the RGB protocol, currently 
+  finalizing Lightning Network compatibility. Developed by Bitlight Labs [bitlightlabs.com](https://bitlightlabs.com/) — builder dedicated 
+  to the Bitcoin DeFi and tokenized fiat payment infrastructure within RGB ecosystem.
+
 
 [command-line tool]: /install#cmd
