@@ -34,7 +34,7 @@ interested in trying the new RGB v0.10 features please use the [command-line too
 
 * ### [Bitlight Wallet](https://bitlightlabs.com/wallet)
 
-  Leading non-custodial Bitcoin wallet supporting the RGB protocol, currently 
+  Modern non-custodial Bitcoin wallet supporting the RGB protocol, currently 
   finalizing Lightning Network compatibility. Developed by Bitlight Labs [bitlightlabs.com](https://bitlightlabs.com/)
    — LNP/BP Association member and key RGB protocol contributor, focusing on
   Bitcoin DeFi and tokenized fiat payment infrastructure within the RGB ecosystem.
