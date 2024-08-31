@@ -34,119 +34,72 @@ edition = "2021"
 resolver = "2"
 
 [dependencies]
-amplify = "4.6.0"
-ascii-armor = "0.2.0"
-strict_encoding = "2.7.0-beta.1"
-strict_types = "2.7.0-beta.1"
-aluvm = { version = "0.11.0-beta.4", features = ["log"] }
-bp-core = "0.11.0-beta.4"
-rgb-std = { version = "0.11.0-beta.4", features = ["serde", "fs"] }
+amplify = "4.7.0"
+strict_encoding = "2.7.0-rc.1"
+bp-core = "0.11.0-beta.7"
+rgb-std = { version = "0.11.0-beta.7", features = ["serde", "fs"] }
+rgb-schemata = "0.11.0-beta.7"
+rgb-interfaces = "0.11.0-beta.7"
 serde = "1.0"
 serde_json = "1.0"
-sha2 = "0.10.8"
-rgb-schemata = "0.11.0-beta.4"
-hex = "0.4.3"
-
-[dev-dependencies]
-chrono = "0.4.31"
-serde_yaml = "0.9.27"
 
 [features]
 all = []
-
-[patch.crates-io]
-commit_verify = { git = "https://github.com/LNP-BP/client_side_validation", branch = "master" }
-bp-consensus = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
-bp-dbc = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
-bp-seals = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
-bp-core = { git = "https://github.com/BP-WG/bp-core", branch = "master" }
-rgb-core = { git = "https://github.com/RGB-WG/rgb-core", branch = "master" }
-rgb-std = { git = "https://github.com/RGB-WG/rgb-std", branch = "master" }
-rgb-schemata = { git = "https://github.com/RGB-WG/rgb-schemata", branch = "master" }
 ```
 
 Then, in `src/main.rs`, write following codes:
 
 ```rust
-use std::convert::Infallible;
-use std::fs;
-
 use amplify::hex::FromHex;
-use armor::AsciiArmor;
 use bp::dbc::Method;
 use bp::{Outpoint, Txid};
-use rgb_schemata::NonInflatableAsset;
-use rgbstd::containers::FileContent;
-use rgbstd::interface::{FilterIncludeAll, FungibleAllocation, IfaceClass, IssuerClass, Rgb20};
+use ifaces::Rgb20;
+use rgbstd::containers::{ConsignmentExt, FileContent};
+use rgbstd::interface::{FilterIncludeAll, FungibleAllocation};
 use rgbstd::invoice::Precision;
-use rgbstd::persistence::{Inventory, Stock};
-use rgbstd::resolvers::ResolveHeight;
-use rgbstd::validation::{ResolveWitness, WitnessResolverError};
-use rgbstd::{WitnessAnchor, WitnessId, XAnchor, XPubWitness};
-use strict_encoding::StrictDumb;
-
-struct DumbResolver;
-
-impl ResolveWitness for DumbResolver {
-    fn resolve_pub_witness(&self, _: WitnessId) -> Result<XPubWitness, WitnessResolverError> {
-        Ok(XPubWitness::strict_dumb())
-    }
-}
-
-impl ResolveHeight for DumbResolver {
-    type Error = Infallible;
-    fn resolve_anchor(&mut self, _: &XAnchor) -> Result<WitnessAnchor, Self::Error> {
-        Ok(WitnessAnchor::strict_dumb())
-    }
-}
+use rgbstd::persistence::Stock;
+use rgbstd::XWitnessId;
+use schemata::dumb::NoResolver;
+use schemata::NonInflatableAsset;
 
 #[rustfmt::skip]
 fn main() {
-    let beneficiary_txid =
-        Txid::from_hex("d6afd1233f2c3a7228ae2f07d64b2091db0d66f2e8ef169cf01217617f51b8fb").unwrap();
+    let beneficiary_txid = 
+        Txid::from_hex("311ec7d43f0f33cda5a0c515a737b5e0bbce3896e6eb32e67db0e868a58f4150").unwrap();
     let beneficiary = Outpoint::new(beneficiary_txid, 1);
 
-    let contract = NonInflatableAsset::testnet("TEST", "Test asset", None, Precision::CentiMicro)
-        .expect("invalid contract data")
-        .allocate(Method::TapretFirst, beneficiary, 100_000_000_000_u64.into())
-        .expect("invalid allocations")
-        .issue_contract()
+    #[allow(clippy::inconsistent_digit_grouping)]
+    let contract = NonInflatableAsset::testnet("ssi:anonymous","TEST", "Test asset", None, Precision::CentiMicro, [(Method::TapretFirst, beneficiary, 1_000_000_000_00u64)])
         .expect("invalid contract data");
 
     let contract_id = contract.contract_id();
 
     eprintln!("{contract}");
     contract.save_file("examples/rgb20-simplest.rgb").expect("unable to save contract");
-    fs::write("examples/rgb20-simplest.rgba", contract.to_ascii_armored_string()).expect("unable to save contract");
+    contract.save_armored("examples/rgb20-simplest.rgba").expect("unable to save armored contract");
 
     // Let's create some stock - an in-memory stash and inventory around it:
-    let mut stock = Stock::default();
-    stock.import_iface(Rgb20::iface()).unwrap();
-    stock.import_schema(NonInflatableAsset::schema()).unwrap();
-    stock.import_iface_impl(NonInflatableAsset::issue_impl()).unwrap();
-
-    stock.import_contract(contract, &mut DumbResolver).unwrap();
+    let mut stock = Stock::in_memory();
+    stock.import_contract(contract, NoResolver).unwrap();
 
     // Reading contract state through the interface from the stock:
-    let contract = stock.contract_iface_id(contract_id, Rgb20::iface().iface_id()).unwrap();
-    let contract = Rgb20::from(contract);
-    let allocations = contract.fungible("assetOwner", &FilterIncludeAll).unwrap();
+    let contract = stock.contract_iface_class::<Rgb20>(contract_id).unwrap();
+    let allocations = contract.allocations(&FilterIncludeAll);
     eprintln!("\nThe issued contract data:");
     eprintln!("{}", serde_json::to_string(&contract.spec()).unwrap());
 
     for FungibleAllocation  { seal, state, witness, .. } in allocations {
+        let witness = witness.as_ref().map(XWitnessId::to_string).unwrap_or("~".to_owned());
         eprintln!("amount={state}, owner={seal}, witness={witness}");
     }
     eprintln!("totalSupply={}", contract.total_supply());
-    eprintln!("created={}", contract.created().to_local().unwrap());
 }
-
 
 ```
 
 Save it, and execute `cargo run`, after that, contract file would save in
 `examples` directory. You can specify your own token name, decimal,
-description, beneficiary and supply by modifing corresponding variable's value,
+description, beneficiary and supply by modifying corresponding variable's value,
 as well as contracts saving fold.
 
 Now, you can import the contract with `rgb import` command:
