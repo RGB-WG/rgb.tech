@@ -19,8 +19,8 @@ bg-color = "white"
 
 ### Integration level APIs
 
-| Library          | Description                                                                                   | API Reference                   | Source code                                                            |
-|------------------|-----------------------------------------------------------------------------------------------|---------------------------------|------------------------------------------------------------------------|
-| RGB Standard Lib | RGB standard library for working with smart contracts on the lowest level                     | <https://docs.rs/rgb-std>       | [RGB-WG/rgb-std](https://github.com/RGB-WG/rgb-wallet/tree/master/std) |
-| RGB Wallet Lib   | Wallet-integration library for WASM apps providing RGB invoices and PSBT functionality        | <https://docs.rs/rgb-wallet>    | [RGB-WG/rgb-wallet](https://github.com/RGB-WG/rgb-wallet)              |
-| RGB Lib          | High-level RGB integration library for mobile & desktop apps providing FS-based stash storage | <https://docs.rs/rgb-contracts> | [RGB-WG/rgb](https://github.com/RGB-WG/rgb)                            |
+| Library            | Description                                                               | API Reference                 | Source code                                         |
+|--------------------|---------------------------------------------------------------------------|-------------------------------|-----------------------------------------------------|
+| RGB Standard Lib   | RGB standard library for working with smart contracts on the lowest level | <https://docs.rs/rgb-std>     | [RGB-WG/rgb-std](https://github.com/RGB-WG/rgb-std) |
+| RGB Wallet Runtime | RGB runtime for wallet integration                                        | <https://docs.rs/rgb-runtime> | [RGB-WG/rgb](https://github.com/RGB-WG/rgb)         |
+| RGB Wallet CLI     | RGB command-line desktop tool, including wallet functionality             | <https://docs.rs/rgb-wallet>  | [RGB-WG/rgb](https://github.com/RGB-WG/rgb)         |
