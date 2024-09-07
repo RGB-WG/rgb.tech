@@ -6,7 +6,7 @@ anchor = "schema"
 +++
 
 ```rust
-fn schema() -> SubSchema {
+fn schema() -> Schema {
     Schema {
         ffv: zero!(),
         subset_of: None,

@@ -35,11 +35,9 @@ resolver = "2"
 
 [dependencies]
 amplify = "4.7.0"
-strict_encoding = "2.7.0-rc.1"
-bp-core = "0.11.0-beta.7"
-rgb-std = { version = "0.11.0-beta.7", features = ["serde", "fs"] }
-rgb-schemata = "0.11.0-beta.7"
-rgb-interfaces = "0.11.0-beta.7"
+bp-core = "0.11.0"
+rgb-std = { version = "0.11.0", features = ["serde", "fs"] }
+rgb-schemata = "0.11.0"
 serde = "1.0"
 serde_json = "1.0"
 
@@ -62,15 +60,20 @@ use rgbstd::XWitnessId;
 use schemata::dumb::NoResolver;
 use schemata::NonInflatableAsset;
 
-#[rustfmt::skip]
 fn main() {
     let beneficiary_txid = 
         Txid::from_hex("311ec7d43f0f33cda5a0c515a737b5e0bbce3896e6eb32e67db0e868a58f4150").unwrap();
     let beneficiary = Outpoint::new(beneficiary_txid, 1);
 
-    #[allow(clippy::inconsistent_digit_grouping)]
-    let contract = NonInflatableAsset::testnet("ssi:anonymous","TEST", "Test asset", None, Precision::CentiMicro, [(Method::TapretFirst, beneficiary, 1_000_000_000_00u64)])
-        .expect("invalid contract data");
+    let contract = NonInflatableAsset::testnet(
+        "ssi:anonymous",
+        "TEST",
+        "Test asset",
+        None,
+        Precision::CentiMicro,
+        [(Method::TapretFirst, beneficiary, 1_000_000_000_00u64)]
+    )
+    .expect("invalid contract data");
 
     let contract_id = contract.contract_id();
 

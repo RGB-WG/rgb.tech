@@ -11,8 +11,8 @@ RGB wallets are developed by the community and independent vendors. Please keep
 in mind that there is no "official" RGB GUI wallet.
 
 **NB: All existing wallets are not yet updated to the latest RGB protocol
-version v0.10 and are not compatible with modern RGB contracts. If you are
-interested in trying the new RGB v0.10 features please use the [command-line tool].**
+version v0.11 and are not compatible with modern RGB contracts. If you are
+interested in trying the new RGB v0.11 features please use the [command-line tool].**
 
 * ### [MyCitadel](https://mycitadel.io)
 

@@ -41,14 +41,14 @@ Next, you need to install developer components, which are OS-specific:
 ### Installing from crates.io
 
 ```
-$ cargo install rgb-contracts --all-features
+$ cargo install rgb-wallet --all-features --locked
 ```
 
 Before the final RGB release it might be required to specify concrete 
 pre-release version as an argument:
 
 ```
-$ cargo install rgb-contracts --all-features --version 0.11.0-beta.7
+$ cargo install rgb-wallet --all-features --locked
 ```
 
 
@@ -60,6 +60,6 @@ By building from the master tip you can get the latest nightly version of
 ```console
 $ git clone https://github.com/RGB-WG/rgb
 $ cd rgb
-$ git checkout v0.11.0-beta.7
+$ git checkout v0.11.0
 $ cargo install --path . --all-features
 ```

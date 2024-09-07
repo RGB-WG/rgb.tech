@@ -52,7 +52,7 @@ Here:
 An example of the command using RGB20 interface to request a token transfer:
 
 ```sh
-alice$ CONTRACT=DirectDetectEqual0EKkb7TMfbPxzn7UhvXqhoCutzdZkSZCNYxVAVjsA67fW
+alice$ CONTRACT='D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0'
 
 alice$ MY_UTXO=4960acc21c175c551af84114541eace09c14d3a1bb184809f7b80916f57f9ef8:1
 
@@ -61,11 +61,11 @@ alice$ rgb invoice $CONTRACT -i RGB20 100 $MY_UTXO
 
 The result of this commands would be an invoice printed to `STDOUT`:
 ```
-rgb:DirectDetectEqual0EKkb7TMfbPxzn7UhvXqhoCutzdZkSZCNYxVAVjsA67fW
-/RGB20/100@6kzbKKffP6xftkxn9UP8gWqiC41W16wYKE5CYaVhmEve
+rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0
+/RGB20/BF+bc:utxob:zlVS28Rb-amM5lih-ONXGACC-IUWD0Y$-0JXcnWZ-MQn8VEI-B39!F
 ```
 
-To learn more about invoices please refer to [RGB FAQ Website](https://rgbfaq.com/concepts/invoices)
+To learn more about invoices please refer to [RGB FAQ Website](https://rgbfaq.com/glossary/user/invoice)
 
 
 ### Performing transfer

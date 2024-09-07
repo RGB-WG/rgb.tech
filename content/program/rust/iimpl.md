@@ -9,7 +9,7 @@ anchor = "iimpl"
 
 fn iface_impl() -> IfaceImpl {
     let schema = schema();
-    let iface = rgb20();
+    let iface = iface();
 
     IfaceImpl {
         schema_id: schema.schema_id(),

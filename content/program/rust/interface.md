@@ -6,7 +6,7 @@ anchor = "interface"
 +++
 
 ```rust
-pub fn rgb20() -> Iface {
+pub fn iface() -> Iface {
     let types = StandardTypes::new();
 
     Iface {
