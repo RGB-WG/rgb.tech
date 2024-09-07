@@ -102,10 +102,11 @@ as secondary issue or DeFi functionality. To do that, please check
 
 The issued contract was added to the stash. You may see it by running
 
-```sh
+```shell
 $ rgb contracts
 
-rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0	bitcoin            	2024-09-07	rgb:sch:RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana         
+rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0	bitcoin            	2024-09-07
+  rgb:sch:RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana
   Developer: ssi:anonymous
 ```
 
