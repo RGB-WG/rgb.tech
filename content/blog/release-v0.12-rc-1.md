@@ -21,6 +21,8 @@ Over the last half of the year, the 0.12 version has brought zk-STARK readiness 
 improvements. The release candidate is for all developers working with RGB, so they can integrate
 it into their software, having guarantees of consensus and low-level API freeze.
 
+----------------------------------------------------------------------------------------------------
+
 What's new
 ----------
 
@@ -62,8 +64,8 @@ Overall, we have achieved x4 reduction in the size of the consensus code and
 x2 reduction in standard libraries, as well as a significant reduction in the number of data types,
 and removal of ~30% of generic type parameters in the APIs.
 
-![Consensus codebase](release-v0.12-rc-1/img.png)
-![Standard libraries codebase](release-v0.12-rc-1/img_1.png)
+![Consensus codebase](/blog/v0-12-consensus.png)
+![Standard libraries codebase](/blog/v0-12-std.png)
 
 Such simplification provides several gains:
 - much reduced attack surface;
@@ -259,19 +261,20 @@ integration, but also with unit tests, which also check known attack scenarios.
 The unit test coverage has increased several folds 
 and exceeds 66.7% for all RGB abstraction levels, reaching >75% in the consensus libraries.
 
-![Test coverage](release-v0.12-rc-1/img_2.png)
+![Test coverage](/blog/v0-12-tests.png)
+
+----------------------------------------------------------------------------------------------------
 
 Using the release
 -----------------
 
-The source code of the release is available on the
-[GitHub](https://github.com/RGB-WG/rgb/tree/v0.12.0-rc.1.1).
+The source code of the release is available on [GitHub](https://github.com/RGB-WG/rgb/tree/v0.12.0-rc.1.1).
 
 Those power users who'd like to play with the command line
 may install it either from the sourcecode or using Rust Cargo command
 
 ```bash
-cargo install rgb-wallet --all-features --version 0.12.0-rc.1.1
+cargo install rgb-wallet --version 0.12.0-rc.1.1
 ```
 
 Demo & examples can be found here:
@@ -282,6 +285,7 @@ Demo & examples can be found here:
 To start integrating RGB, please feel free to contract LNP/BP Standards Association
 via e-mail info at lnp-bp dot org.
 
+----------------------------------------------------------------------------------------------------
 
 What's next
 ------------
@@ -300,6 +304,7 @@ What's next
    will be created by the companies using RGB in their products.
    This organization will ensure the protocol stability and will take care of the codebase maintenance.
 
+----------------------------------------------------------------------------------------------------
 
 Acknowledgments
 ---------------
