@@ -290,7 +290,7 @@ via e-mail info at lnp-bp dot org.
 What's next
 ------------
 
-1. We plan to update the RGB documentation and the website in order to reflect all the changes.
+1. We plan to update [the website] and documentation on it in order to reflect all the changes.
    This will be happening over the course of the next few weeks.
 
 2. We will be supporting developers integrating RGB v0.12 into their products.
@@ -314,6 +314,7 @@ The version was designed and implemented by Dr Maxim Orlovsky, financed by [Pand
 developers, who also had completed the integral test coverage, ensuring the protocol security.
 The initial three months of development were also financed by [Fulgur Ventures].
 
+[the website]: https://rgb.tech
 [Pandora Prime Inc.]:  https://pandoraprime.ch/
 [Fulgur Ventures]: https://fulgur.ventures/
 [Bitlight Labs]: https://bitlightlabs.com/
