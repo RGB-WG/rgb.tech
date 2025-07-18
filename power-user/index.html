@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>RGB smart contracts</title>
+  <link rel="stylesheet" href="/tachyons-ext.css">
+  <link rel="stylesheet" href="/fonts.css">
+  <link rel="stylesheet" href="/front.css">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="pragma" content="no-cache">
+  
+    <meta name="description" content="">
+
+    <meta property="og:title" content="Power user guidelines" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://rgb.tech/rgb-banner.png" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="RGB protocol">
+
+    <meta name="twitter:site" content="@lnp_bp">
+
+</head>
+
+<body>
+<nav class="flex flex-row justify-center justify-end-l items-center flex-wrap ph2 pl3-ns pr3-ns pb3">
+  <div id="logo" class="flex-auto w-100 w-auto-l self-start self-center tc tl-l">
+    <a href="/">
+      <img alt="RGB Logo" src="/logo/rgb-symbol-color.svg">
+    </a>
+  </div>
+  <ul class="nav list w-100 w-auto-l flex flex-none flex-row flex-wrap justify-center justify-end-l items-center pv2 ph0 ph4-ns">
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/install">Install</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/learn">Learn</a></li>
+    <!-- li class="tc pv2 ph2 ph4-ns flex-20-s">Tools</li -->
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/governance">Governance</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="https://t.me/rgbtelegram">Community</a></li>
+    <li class="tc pv2 ph2 ph4-ns flex-20-s"><a href="/blog">Blog</a></li>
+  </ul>
+</nav>
+<main>
+  
+    
+    
+        
+    
+    <section class="section-white li-columns">
+        <div>
+            <header class="pb0">
+                <h1 id="title">Power user guidelines</h1>
+            </header>
+
+            <p>This page will guide through an interaction with RGB smart contracts from
+a command-line, giving a power user perspective on what the system can do.
+It is a "baseline guide", abstracted from a specifics of particular wallet
+or GUI implementations, which may be not updated to the latest RGB version.</p>
+<ul>
+<li><h3 id="using-contracts">Using contracts</h3>
+<p>First, we'd like to explore how one can add an existing RGB contracts and
+interact with a current RGB contract state, getting data about owned
+assets, supply and other information.</p>
+<p><a href="#contract" class="button button-secondary">Read more</a></p>
+</li>
+<li><h3 id="transfer-state">Transfer state</h3>
+<p>Second, we will figure out how users can interact with each other in context
+of a specific RGB smart contract, including how they can do a transfer of
+assets or other forms of RGB contract state.</p>
+<p><a href="#transfer" class="button button-secondary">Read more</a></p>
+</li>
+<li><h3 id="issue-a-contract">Issue a contract</h3>
+<p>Finally, we will demonstrate how to issue a new RGB contracts (including
+creating assets), which can then be imported by other users. But think twice
+before producing another token :)</p>
+<p><a href="#issue" class="button button-secondary">Read more</a></p>
+</li>
+</ul>
+<p>This section assumes you have <code>rgb</code> command-line tool already installed.
+If not, please refer to the <a href="/install#cmd">installation guidelines</a>.</p>
+
+        </div>
+    </section>
+        
+            
+        
+        
+            
+        
+        <section class="section-green ">
+            <div>
+                <header  id="contract"  class="pb0">
+                    <h2>Using contracts</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>A contract is distributed as a package, named <strong>contract consignment</strong>.</p>
+<p><em>Consignment</em> is a term in RGB denoting a package of client-side-validated
+data passed between peers. Consignments may be of two different types:
+<em>contract consignments</em>, which distribute public contract information from a
+contract issuer to users, and <em>transfer consignments</em>, which are used for doing
+state transfers between contract users. In this chapter we will address the
+first type of consignments, leaving the second for a next chapter.</p>
+<p>RGB stores all data required for its operations in a storage called <strong>stash</strong>.
+Since RGB is not a blockchain-based smart contracts, the stash is not replicated
+to other peer machines and usually keeps the data which nobody else than you
+know or have access to (at least to some of those data). Thus, losing stash
+means loosing your assets and contract state, and it has to be backed up with
+the same effort as a seed phrase or wallet descriptor for a complex wallet
+setup.</p>
+<p>To import a contract into your stash one first needs to get a contract
+consignment from a contract issuer. A contract consignment is either a binary
+file – or an ASCII/Base64-armoded text (and example can be found it the
+<a href="/power-user/#issue">"issuing contract" section</a>).</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb import contract.rgb
+</span></code></pre>
+<p>To list contracts which are part of the stash you need to run <code>rgb</code> commands
+with no arguments provided (or <code>rgb contracts</code> as an alternative to this)</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb contracts
+</span></code></pre>
+<p>Which should output something like</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0	bitcoin            	2024-09-07	rgb:sch:RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana         
+</span><span>  Developer: ssi:anonymous
+</span></code></pre>
+<p>Here you see your imported contract id, plus a schema, used by this contract
+which implements RGB20 interface. Now, you can read the state of the contract
+through this interface:</p>
+<pre data-lang="shell" style="background-color:#2b303b;color:#c0c5ce;" class="language-shell "><code class="language-shell" data-lang="shell"><span>$ rgb state &#39;D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0&#39; RGB20Fixed
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Global:
+</span><span>  spec := (ticker=(&quot;DBG&quot;), name=(&quot;Debug asset&quot;), details=1((&quot;Pay attention: the asset has no value&quot;)), precision=2)
+</span><span>  terms := (text=(&quot;SUBJECT TO, AND WITHOUT IN ANY WAY LIMITING, THE REPRESENTATIONS AND WARRANTIES OF ANY SELLER  EXPRESSLY SET FORTH IN THIS AGREEMENT OR ANY OTHER EXPRESS OBLIGATION OF SELLERS PURSUANT TO THE TERMS HEREOF, AND ACKNOWLEDGING THE PRIOR USE OF THE PROPERTY AND PURCHASER’S OPPORTUNITY  TO INSPECT THE PROPERTY, PURCHASER AGREES TO PURCHASE THE PROPERTY “AS IS”, “WHERE IS”,  WITH ALL FAULTS AND CONDITIONS THEREON. ANY WRITTEN OR ORAL INFORMATION, REPORTS, STATEMENTS,  DOCUMENTS OR RECORDS CONCERNING THE PROPERTY PROVIDED OR MADE AVAILABLE TO PURCHASER, ITS AGENTS OR CONSTITUENTS BY ANY SELLER, ANY SELLER’S AGENTS, EMPLOYEES OR THIRD PARTIES REPRESENTING OR PURPORTING TO REPRESENT ANY SELLER, SHALL NOT BE REPRESENTATIONS OR WARRANTIES, UNLESS SPECIFICALLY SET FORTH HEREIN. IN PURCHASING THE PROPERTY OR TAKING OTHER ACTION HEREUNDER, PURCHASER HAS NOT AND SHALL NOT RELY ON ANY SUCH DISCLOSURES, BUT RATHER, PURCHASER SHALL RELY ONLY ON PURCHASER’S OWN INSPECTION OF THE PROPERTY AND THE REPRESENTATIONS AND WARRANTIES  HEREIN. PURCHASER ACKNOWLEDGES THAT THE PURCHASE PRICE REFLECTS AND TAKES INTO ACCOUNT THAT THE PROPERTY IS BEING SOLD “AS IS”.
+</span><span>&quot;), media=~)
+</span><span>  issuedSupply := (100000000)
+</span><span>
+</span><span>Owned:
+</span><span>  assetOwner:
+</span><span>    value=100000000, utxo=bc:tapret1st:b449f7eaa3f98c145b27ad0eeb7b5679ceb567faef7a52479bc995792b65f804:1, witness=~ -- owner unknown
+</span></code></pre>
+<p>Here you see that the contract has both global state, representing the
+information about RGB20 token, and an owned state – certain amount of that
+token assigned to an UTXO. Since we do not use any wallet, it shows that the
+owner of this output is not known.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-purple ">
+            <div>
+                <header  id="transfer"  class="pb0">
+                    <h2>State transfers</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>In most of the cases interaction between contract participants happens through
+<strong>invoicing</strong>: if <em>Alice</em> wants <em>Bob</em> to do something with the contract state he
+owns (for instance, send some of the tokens to <em>Alice</em>), she constructs an
+invoice which contains instructions for Bob on the action he is asked to perform.</p>
+<p>Hereinafter we will call Alice, who <strong>issues an invoice</strong>, a <em>beneficiary</em>, and
+Bob, who <strong>executes</strong> the invoice, an <em>actor</em>. We say <em>invoice executing</em>
+instead of <em>paying the invoice</em>, since invoice may not contain a payment and
+carry some other form of action (key revocation, casting a vote etc).</p>
+<h3 id="creating-an-invoice">Creating an invoice</h3>
+<p>In RGB, invoicing is much more general than just an invoice for a certain amount
+of tokens. In fact, you can pack any request for any contract operation, under
+any possible schema and interface in form of invoice: revoking identity, voting
+in DAO, performing secondary asset issuance, creating NFT engraving and so on,
+so on.</p>
+<p>To construct an invoice one have to run the following command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb invoice $</span><span style="color:#bf616a;">CONTRACT -i </span><span>$</span><span style="color:#bf616a;">INTERFACE -a </span><span>$</span><span style="color:#bf616a;">ACTION </span><span>$</span><span style="color:#bf616a;">STATE </span><span>$</span><span style="color:#bf616a;">SEAL
+</span></code></pre>
+<p>Here:</p>
+<ul>
+<li><strong><code>$CONTRACT</code></strong> should be a contract id under which the interaction happens</li>
+<li><strong><code>$INTERFACE</code></strong> is human-readable interface name which should be used for
+interacting the contract by both parties, beneficiary and actor. It may be
+skipped, if the contract schema implements just a single interface.</li>
+<li><strong><code>$ACTION</code></strong> is the name of the operation which should be performed by the
+actor. If it is skipped, it defaults to an operation which declared in the
+used interface as "default".</li>
+<li><strong><code>$STATE</code></strong> provides an information about the state, which should be
+transferred to the beneficiary single-use-seal defined in the <code>$SEAL</code>
+parameter. The state mast match state type for the given action, for instance,
+for a transfer of a fungible token it must be an integer specifying amount
+of smallest token denominations to be transferred.</li>
+<li><strong><code>$SEAL</code></strong> is a definition of a single-use-seal owned by beneficiary; it can
+be either a UTXO on beneficiary's wallet, or an address. If an address is used
+then the actor will use it to construct an UTXO in his witness transaction,
+and this UTXO will be seen and in control of the beneficiary.</li>
+</ul>
+<p>An example of the command using RGB20 interface to request a token transfer:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">alice$</span><span> CONTRACT=&#39;</span><span style="color:#a3be8c;">D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0</span><span>&#39;
+</span><span>
+</span><span style="color:#bf616a;">alice$</span><span> MY_UTXO=4960acc21c175c551af84114541eace09c14d3a1bb184809f7b80916f57f9ef8:1
+</span><span>
+</span><span style="color:#bf616a;">alice$</span><span> rgb invoice $</span><span style="color:#bf616a;">CONTRACT -i</span><span> RGB20 100 $</span><span style="color:#bf616a;">MY_UTXO
+</span></code></pre>
+<p>The result of this commands would be an invoice printed to <code>STDOUT</code>:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0
+</span><span>/RGB20/BF+bc:utxob:zlVS28Rb-amM5lih-ONXGACC-IUWD0Y$-0JXcnWZ-MQn8VEI-B39!F
+</span></code></pre>
+<p>To learn more about invoices please refer to <a href="https://rgbfaq.com/glossary/user/invoice">RGB FAQ Website</a></p>
+<h3 id="performing-transfer">Performing transfer</h3>
+<p>To perform a state transfer <em>Bob</em> has to receive an invoice from <em>Alice</em>.
+We assume that <em>Bob</em> has some command-line wallet tool, which is able to
+construct, sign and publish normal bitcoin transactions (we will represent
+this tool with a <code>wallet</code> command).</p>
+<p>At the first stage, Bob constructs PSBT file, which must spend outputs
+containing sufficient amount of RGB assets, plus an output to store a change.
+We assume that Bob saves PSBT to <code>tx.psbt</code> file.</p>
+<p>Now, Bob can pay Alice's invoice (which he saved to <code>$INVOICE</code> variable) with
+the following command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">bob$</span><span> rgb transfer tx.psbt $</span><span style="color:#bf616a;">INVOICE</span><span> consignment.rgb
+</span></code></pre>
+<p>The result transfer consignment will be stored to <code>consignment.rgb</code> file in a
+binary form. Bob should send this file to Alice by some third-party means - this
+can be an e-mail, some file server – or one of existing RGB-related protocols,
+like RGB-RPC, Storm (no Lightning network) or something else.</p>
+<p>Upon receiving the consignment Alice verifies and accepts it to her local
+<strong>RGB stash</strong> (which keeps information about all Alice contracts and owned
+state) with the following command:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">alice$</span><span> rgb accept consignment.rgb
+</span></code></pre>
+<p>If the consignment was invalid, the command will fail and list all problems the
+consignment had. Otherwise, the command should succeed with a single warning –
+that the terminal witness transaction is not yet mined. This is due to the fact
+that Bob hasn't yet published his transaction yet, since he is waiting on Alice
+approval that she is happy with the transfer.</p>
+<p>Upon adding transfer consignment to the stash command will return a signature
+over the consignment, which Alice can send back to Bob as a form of payslip.</p>
+<p>Bob can now check Alice's signature, sign and publish his transaction:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">bob$</span><span> rgb check &lt;sig&gt; &amp;&amp; </span><span style="color:#bf616a;">wallet</span><span> sign</span><span style="color:#bf616a;"> --publish</span><span> tx.psbt
+</span></code></pre>
+<p>Alice's RGB wallet will see the witness transaction mined, after which the
+new state will appear in her user interface.</p>
+
+            </div>
+        </section>
+    
+        
+            
+        
+        
+            
+        
+        <section class="section-red ">
+            <div>
+                <header  id="issue"  class="pb0">
+                    <h2>Issuing contract</h2>
+                    <div class="highlight"></div>
+                </header>
+
+                <p>To issue a contract you need to write a contract declaration file. Contract
+declarations can be done in multiple languages, including Rust, YAML,
+and future <a href="https://www.contractum.org">Contractum</a>. Here we will stick with
+a YAML format as most easy-to-use and human-readable format, writing which
+doesn't require any developer skills:</p>
+<pre data-lang="yaml" style="background-color:#2b303b;color:#c0c5ce;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="color:#bf616a;">interface</span><span>: </span><span style="color:#a3be8c;">RGB20Fixed
+</span><span>
+</span><span style="color:#bf616a;">globals</span><span>:
+</span><span>  </span><span style="color:#bf616a;">spec</span><span>:
+</span><span>    </span><span style="color:#bf616a;">ticker</span><span>: </span><span style="color:#a3be8c;">DBG
+</span><span>    </span><span style="color:#bf616a;">name</span><span>: </span><span style="color:#a3be8c;">Debug asset
+</span><span>    </span><span style="color:#bf616a;">details</span><span>: &quot;</span><span style="color:#a3be8c;">Pay attention: the asset has no value</span><span>&quot;
+</span><span>    </span><span style="color:#bf616a;">precision</span><span>: </span><span style="color:#d08770;">2
+</span><span>  </span><span style="color:#bf616a;">terms</span><span>:
+</span><span>    </span><span style="color:#bf616a;">text</span><span>: </span><span style="color:#b48ead;">&gt;
+</span><span style="color:#a3be8c;">      SUBJECT TO, AND WITHOUT IN ANY WAY LIMITING, THE REPRESENTATIONS AND WARRANTIES OF ANY SELLER 
+</span><span style="color:#a3be8c;">      EXPRESSLY SET FORTH IN THIS AGREEMENT OR ANY OTHER EXPRESS OBLIGATION OF SELLERS PURSUANT TO THE
+</span><span style="color:#a3be8c;">      TERMS HEREOF, AND ACKNOWLEDGING THE PRIOR USE OF THE PROPERTY AND PURCHASER’S OPPORTUNITY 
+</span><span style="color:#a3be8c;">      TO INSPECT THE PROPERTY, PURCHASER AGREES TO PURCHASE THE PROPERTY “AS IS”, “WHERE IS”, 
+</span><span style="color:#a3be8c;">      WITH ALL FAULTS AND CONDITIONS THEREON. ANY WRITTEN OR ORAL INFORMATION, REPORTS, STATEMENTS, 
+</span><span style="color:#a3be8c;">      DOCUMENTS OR RECORDS CONCERNING THE PROPERTY PROVIDED OR MADE AVAILABLE TO PURCHASER, ITS AGENTS
+</span><span style="color:#a3be8c;">      OR CONSTITUENTS BY ANY SELLER, ANY SELLER’S AGENTS, EMPLOYEES OR THIRD PARTIES REPRESENTING OR
+</span><span style="color:#a3be8c;">      PURPORTING TO REPRESENT ANY SELLER, SHALL NOT BE REPRESENTATIONS OR WARRANTIES, UNLESS
+</span><span style="color:#a3be8c;">      SPECIFICALLY SET FORTH HEREIN. IN PURCHASING THE PROPERTY OR TAKING OTHER ACTION HEREUNDER,
+</span><span style="color:#a3be8c;">      PURCHASER HAS NOT AND SHALL NOT RELY ON ANY SUCH DISCLOSURES, BUT RATHER, PURCHASER SHALL RELY
+</span><span style="color:#a3be8c;">      ONLY ON PURCHASER’S OWN INSPECTION OF THE PROPERTY AND THE REPRESENTATIONS AND WARRANTIES 
+</span><span style="color:#a3be8c;">      HEREIN. PURCHASER ACKNOWLEDGES THAT THE PURCHASE PRICE REFLECTS AND TAKES INTO ACCOUNT THAT THE
+</span><span style="color:#a3be8c;">      PROPERTY IS BEING SOLD “AS IS”.
+</span><span>    </span><span style="color:#bf616a;">media</span><span>: </span><span style="color:#d08770;">~
+</span><span>  </span><span style="color:#bf616a;">issuedSupply</span><span>: </span><span style="color:#d08770;">100000000
+</span><span>
+</span><span style="color:#bf616a;">assignments</span><span>:
+</span><span>  </span><span style="color:#bf616a;">assetOwner</span><span>:
+</span><span>    </span><span style="color:#bf616a;">seal</span><span>: </span><span style="color:#a3be8c;">tapret1st:b449f7eaa3f98c145b27ad0eeb7b5679ceb567faef7a52479bc995792b65f804:1
+</span><span>    </span><span style="color:#bf616a;">amount</span><span>: </span><span style="color:#d08770;">100000000 </span><span style="color:#65737e;"># this is 1 million (we have two digits for cents)
+</span></code></pre>
+<p>As you can see, contract definition consists of:</p>
+<ul>
+<li>specification of the interface used for constructing the contract and parsing
+provided state</li>
+<li>global state – in this case specifying token nominal information and giving
+legal contract text</li>
+<li>assignments, which assign owned state (issued asset amount) to a single-use seals,
+which are bitcoin UTXO prefixed with a type of seals (<code>tapret1st</code> stays for
+"tapret 1st output").</li>
+</ul>
+<p>You compile the contract and issue it with the command <code>rgb issue</code>. It takes
+three arguments:</p>
+<ul>
+<li>the name of a schema which is used as a template for the contract;</li>
+<li>an information about the issuer identity;</li>
+<li>YAML file with the contract text we have written above.</li>
+</ul>
+<p>Schemata are templates written by professional developers, which hides the
+contract complexity from the issuers. You may look for them at <a href="https://rgbex.io">https://rgbex.io</a>,
+or just <a href="https://rgb.tech/power-user/issue/kit">download a kit</a> with the one containing the schema we will be
+using today.</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb import </span><span style="color:#bf616a;">~</span><span>/Downlads/NonInflatibleAsset.rgb
+</span></code></pre>
+<p>You will see a number of messages on a successful import, which contains
+ids of the components you have added to the RGB stock.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Importing kit rgb:kit:$Rniyeda-KT4Rnce-aN9gKgA-xkhhVMC-y4SEO8L-KQd9DYI:
+</span><span>- interface RGB20Fixed $iUnO9aO-1xhqUd6-1Jm5S5!-wM3ngby-5GVEylQ-ZTAMYDk#tornado-pioneer-bucket
+</span><span>- schema NonInflatableAsset RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana
+</span><span>- implementation of RGB20Fixed for NonInflatableAsset
+</span><span>- script library alu:q$CZ0ovt-UN9eBlc-VMn86mz-Kfd3ywu-f7$9jTB-k6A8tiY#japan-nylon-center
+</span><span>- strict types: 89 definitions
+</span><span>Kit is imported
+</span></code></pre>
+<p>Here we can read that the id of the schema is <code>RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k</code>,
+please copy it. Now, we can finally issue the contract:</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb issue &#39;</span><span style="color:#a3be8c;">RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k</span><span>&#39; ssi:anonymous examples/rgb20-demo.yaml
+</span><span style="color:#bf616a;">A</span><span> new contract rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$</span><span style="color:#bf616a;">bJPPf</span><span>-SWp9193-OLIdtv0 is issued and added to the stash.
+</span><span style="color:#bf616a;">Use </span><span>`</span><span style="color:#b48ead;">export</span><span>` command to export the contract.
+</span></code></pre>
+<p>Please pay attention that the schema id is put into a single quotes: RGB ids
+may contain characters like <code>$</code> and <code>!</code> which has a special meaning in the
+command shell; if no quotes - or double quotes are used, you will probably
+get an error.</p>
+<p>One may also develop a custom, more advanced schema, providing such facilities
+as secondary issue or DeFi functionality. To do that, please check
+<a href="/program">programming RGB</a> on this website.</p>
+<p>The issued contract was added to the stash. You may see it by running</p>
+<pre data-lang="shell" style="background-color:#2b303b;color:#c0c5ce;" class="language-shell "><code class="language-shell" data-lang="shell"><span>$ rgb contracts
+</span><span>
+</span><span>rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0	bitcoin            	2024-09-07
+</span><span>  rgb:sch:RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana
+</span><span>  Developer: ssi:anonymous
+</span></code></pre>
+<p>To distribute contract to other users you have to export it in a form of
+<strong>contract consignment</strong>. This consignment may be a binary file - or
+ASCII/Base64 armored text, such that it can be sent via messengers or by an
+e-mail (or even put into a dynamic QR code).</p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#c0c5ce;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#bf616a;">$</span><span> rgb export &#39;</span><span style="color:#a3be8c;">D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0</span><span>&#39;
+</span></code></pre>
+<p>By default, this prints the contract in ASCII armored form to the terminal.</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>-----BEGIN RGB CONSIGNMENT-----
+</span><span>Id: rgb:csg:4!k8VkFo-3Kc1KIw-08wnjOw-u$7Qg89-Nwu3Kg5-oq!MoWM#sister-chance-imagine
+</span><span>Version: 2
+</span><span>Type: contract
+</span><span>Contract: rgb:D4RN7r4$-ZNt43c$-ymINZ1r-M$bJPPf-SWp9193-OLIdtv0
+</span><span>Schema: rgb:sch:RDYhMTR!9gv8Y2GLv9UNBEK1hcrCmdLDFk9Qd5fnO8k#brave-dinner-banana
+</span><span>Interface: RGB20Fixed
+</span><span>Check-SHA256: d1938b9bde125082e7078d053e604a73200e78f456c4dd663ff274b93bfd4480
+</span><span>
+</span><span>0ssI2002ZbAu%+5_6z)DVT-@j4Fp29h04O2(!&amp;-{P&lt;NN-JIMf4lH6th0000D0CRI`I$&gt;^aZh38Qb#nm#
+</span><span>0iX{an?byYI6I(On(v&amp;Y_J51|kNPSBNMBNFlDt%HFCVc01JDNn05|{xL_$XkL}g-iXCPs7b7gb^B~W2`
+</span><span>AYpWLWo~q7Z*DpubZBKDVRLh3bRcM9b0BVSAa-GFb!7t42LS+;1d;?(RYFQdLsTGCPb?roPDCJANmNKr
+</span><span>Ra78JP9Q-}Ss+(ISs+YFO-WQqPDd;tR7gc2QbkZwMN&gt;siR6$fpPfk-HK~6*&lt;S3y!zK~7XjMN=S8Mj$~&gt;
+</span><span>Ss+tIOiV&gt;mARt9pP*O!xQ%qSPQ$&lt;uDMo&amp;^yNFYg0AXG?6Qy@V{Qbk2gMNU*8Pf{R3PFWyNR7gcqAVpYE
+</span><span>Qbki!AWuR}Nk&gt;6cNl#87Peve9MNCXZQd1yMRZ&gt;$`K~7X4R8JsONJSu2MN&amp;;uAV@`0MNdX7AVE$&lt;AVEV*
+</span><span>PES`%MMOtQPDdbANJSt}Qb|uzAXQUEAWudhR7gc2P*P7&amp;MN(8*AVE$&lt;AW&amp;6OLr6hWMN;B`nNuK7P*6`&amp;
+</span><span>R8&gt;w%R9PS(R8JsDPE$}tLsTGCNJSt}QcqAtQdC(iAW&amp;6OLr6hWMN%L^M^Z&amp;aQy^4NAW&amp;6OLr6hWMIcm2
+</span><span>MIca8Pf$ftR9PV6fSf^7AW2i=fSoKL;((l2NJUabAW2i=fSoKLAXiCLNFYH&gt;Odv)&lt;RZLV&lt;AVE$&lt;AVW`1
+</span><span>L`hUhPfk-HR7gcqMNdvHAVE%9AXidJR8&amp;PyAWu&gt;tPf|flAW2R}Pf|@mR7p=xEFe-vP)|}+Q!F4;R6$fl
+</span><span>O+`*rQ!F4LL{CFiO+`*rQy@=LAW}s`Pf|ovAVW`1Lq$?fNlr%~R7gc2P*P7&amp;MN(8*AW%|IR!KxfL?BO6
+</span><span>AWcC;MIb&gt;|K}k$OLQF*&lt;R8JsKRZ&gt;GpK~qIiEFei#Qy@V{MNU*xAWu&gt;tLr+dqR7q4-MNU*xAVOInK~7m9
+</span><span>Q$&lt;WnMN%vvK~7m9Q$&lt;WnMN;B`nNuJ^M@3FlQ!F4wO;AivSw%%tAWu&gt;tR7gouL?BQ&gt;QdCJrQy@}BP*O!x
+</span><span>MNU*nPDdb5QXo)OQczD)R7p-pAXHBvQbkZwMN&gt;siR3Jf4Ss+tIOiV&gt;mEFe=zK}&lt;{_PES-ILPa1_MNm&gt;j
+</span><span>Q$&lt;cxK~zakPE#OHQXp4BQc^)qR7pisEFe`*Ohr&gt;uAX899LrF$SLqSYTSs+tIR3JuAQdCGFNJUabNlq&gt;x
+</span><span>NlqY8RZ&gt;GpK~qUiM&lt;7&amp;4MIca8Pf$ftR9PTTQXo`8OG!&gt;gAWu|CMN%L^LsUsmP9R7{QbkoxL`708AW&amp;6O
+</span><span>Lr6hWMN%M0K~o@3PgEd5PDCJ6NI^_YAWlzIAW}t4Ss+hNAVE%9AX8OCNFYQ&gt;Q$tKoQ&amp;mz$Q!F4tRa78S
+</span><span>K~zXZQY;`)RZ&gt;GpK~qIiAX7*|OiUnBMNC;BPfko(AWu#pP*qYxNI_FYQsRJ_Qy@=QP9RB6Q&amp;2@iR7p=x
+</span><span>AWudhR7gc2P*P7&amp;MN(8*AVE$&lt;AXG?2AW}t8QbkimPE&lt;iuNl#8wAVE$&lt;AXh&lt;BQbA5sNkvm2AV@`0MM+LB
+</span><span>AW&amp;6OLr6hWMN%L^LrYFiS4&gt;4jM@3U0R7gQoAXG?2AW&amp;6OLr6hWMIca8Nkc^-Qbk5gMMG3mAVE$&lt;AXGt1
+</span><span>MN=S2PE=1IK|@1NRZdhOR7gQoAXG?2AW%|IP(@NySs+PMAVNh+PDdb9PfSE0;((k%Qy@uG;((nl3IN&amp;%
+</span><span>0RRX90O9oo000000iX{70RRI40R;GED|wa4n@3W5@A_x8&amp;UsdQ&gt;kh3aTNI4&gt;qw4obv;hDB01k2`^Nzob
+</span><span>ln4Of^#uR`004e|etv#_etv#_etv#_etv#_etv#_etv#_etv#_etsUCLA;1KJD^#b@0_Lfe~bE$`YHiP
+</span><span>Us7t4yi{#3AF%)c00000000000000001{4bZb@!tY+-a^Vr*qWb8}^Mkc}T^00000GyrpRX*x_=Q!#aT
+</span><span>EoW*(Ic```MlDZcWpq_lYga8cax-;PLsK&gt;_VNqyvIaf7iEjUU=H+KL7&amp;&lt;6n5{J!HJ@Tgs1mpj@U3yhwA
+</span><span>`^&amp;{wC3iS1tkb=;A&amp;LP3007Yk09%X4R5&amp;sPN*yA;lp&lt;^AQ;QQiCWsumMiT;fc;H-Y_W=L^+6MrLj96u3
+</span><span>I`KP|x6K-jit^gQ+!PC!a#7jT+VjUz9FBwm0004?4*&gt;`O00Ynm0RRC2(FXwl0RY+u0RRC20iX{70RR60
+</span><span>0juzt(u?g--(Ch+6*7N1n=+qwe6YFx|MoP&amp;lb}4dCJ6ul0T3qu00E#60RaF10iX{70RR600juzt(u?g-
+</span><span>-(Ch+6*7N1n=+qwe6YFx|MoP&amp;lb}4dCIA2c00000000010SZz_LNYK$X?SI11XfR6&lt;MVPB{R!&amp;WDGXgX
+</span><span>2u=0cfR=^v4L0bS8HU8WU)OVbJscBHuRauJB?krea%!Hk0(I6sCqhFtSs;lPKAoX!0r&amp;&lt;f`@aL{H!tSG
+</span><span>|BE#(Vo+CtFZ-&gt;o;2qj;#=~;t^vidEtAC%IlVX)dgF*wOtts}w(E1kon`A59t%UgjW&amp;i*H0009FX&gt;)UR
+</span><span>Wn@!zaBysS0f&gt;xPWn((=JC(Q18jXtb+QHlu3zu?H+0@$e$59-PgaH5qb8uy20oVM#;~wy+U0;_w+8Yau
+</span><span>o__nw#aAVFI4rEwy|f{U0RaF7bY*gFa{*h6$5c2n1xg(vzLX+s=TnOlIwpu5x&lt;(TMczEDkZ1({G0SaMr
+</span><span>b7gc-cWz~J0ssL4000033~6(7b!B8zb#QQOc&gt;w?c00eVzWn%#V0RRPbWpZtE0RRC20SaMrb7gc-cWz~J
+</span><span>0RaF1009nZb8~fNWKC&amp;vZDDj{XaNXxa$#&lt;BW@T~!000013So0|Wpqz&gt;Ze?--0RR613So0|Wpqz&gt;Ze?--
+</span><span>0RR600S|6(Zbfl*VQfKdZ*^{Ta{&amp;rrb8}^MPj_x*asUAcbaG*Cb7p070uE_&amp;b9H58O=)v&amp;VRU0?WOH?J
+</span><span>aBO)Xb8uy2X=Z6&lt;WFTR4AYmY9Y;R&amp;=Y#?x9a$#*{bY*fNWN&amp;42ZYOjgZDDj{XdrZGWguyDb9H58Aaiwa
+</span><span>aBO)XVQg$~V_|e&lt;WFT~JAarPDAYpTJWpp5KcWz~Ja}REBZbfl*VQfKdZ*^{Tb47G$Wgv5PZ6I%EAaihK
+</span><span>Zge1Fb8}^Mb0B1IWpi#PbRcDMbzy8EbZ;PZXk{RCb!{MTW*}j6b7gdMAZczOZ*_EVb#!wy0CRI`I!szq
+</span><span>F?Dz?XKF+_Zdg!8El*=*bX8SrS1mSjGj&amp;r#Q#LJOQD}2HS2boWI7&amp;q~cL78;Au%+5_6z)DVT-@j4Fp29
+</span><span>h04O2(!&amp;-{P&lt;NN-JIVefCp*@T*BEM1-nAxfQs?Xp-gq0!k(CoEP-QR-U^$SDA7%gm00003&amp;&lt;6x_aAjiv
+</span><span>0002d2L*Ixa&amp;2&lt;}0002m2MlR*b9H58Q+04~Y&lt;U0x0004?4+&gt;#(b7gc-cWz~J00000009su2y}8`ZgXa3
+</span><span>asU7T000624{mR6MR9duY(Z^rb#8QX000000S;+%b9H58O=)v&amp;VRU0?00000GyrpRX*x_=Q!#aTEoW*(
+</span><span>Ic```MlDZcWpq_lYga8cax-;PLsK&gt;_VNqyvIaf7iEjUU=H+KLd000X1U)Cjo-i6E2P9x&amp;mnv%Qki+Oba
+</span><span>;k67*blZ=H=TQh&gt;UMA(m1w0!?L{VGDpk+OvDhHAKF%fNXr25$w;Zs!r0000000007000000000O%am^t
+</span><span>lg}6qop{{FTg974FaQ3n`}K{nn9PGH_DcZ;0agu`_oR6wvcum54rF6FkJew+k!36?Lqfl$`8gF)R2-|n
+</span><span>!`LRkztQP;3W%Qi%!_9htpQ3t&gt;=3qD6)+-@LI6M&lt;uyu|U!T^j90F36+)E=H0H{s0&gt;nH0sEektM3d!V}o
+</span><span>0nEa3l8&lt;&gt;f1KA&amp;4t&amp;LI4m}^5aI1iE}_s79eO?HmEkSbfMtWb&amp;n35^vCNG$%?ywDnvz}K{0G9hl&amp;cB^sg
+</span><span>-3J`2zr)xjz`xPycM6D}`pk=G7OeqFKI{;-SrsrMkU}5;FWB;W7bg;sK59Oe@c3K=fV3eR7p&amp;1RS^QDd
+</span><span>q`TfM1OfmAZf|a7*gwADFAe3iZ1@l19{2t5VaJV^T`{fc?xMUvnKPbj0R(ezZDp`&lt;(~tJj3|i&amp;b2NlXO
+</span><span>R2^DUyWY#wQk^*F-L`Td370(4qMgjGn~{4aFkgwNr28QlFe*-S#jFZ=4d$x=UULI21Z8+*Y#{__VRL9B
+</span><span>24rt+Y+-UF17U4&amp;CIoP7b#p5OWMOk?Edyk4bS?yXWpZyY18;6+F#~jWZ!!gRXmVv`GX!RDb#gQWW@&amp;b1
+</span><span>H3M^Lcs2!dWp-t5Hw9&amp;BXJ~Xd1a4_=WjO_7VRB`3UIuJ$WMOk?UjboZ0b*hSV`BkiWC3Mm0cK_aXJ-Lu
+</span><span>XaQ+y0cvUiYij{)YyoX;0d8&amp;qZ*Ku`Z~&lt;{~0djHyb8`W7bOCjB0d{r)cXt7Jcma8N0eX5rD{{BQuNq?v
+</span><span>w$uLzi?1~hlkP@ao_$9uVE}^UN!R2B0b{Bo6zH)&gt;$g+grvznd|(VVK)`s##^Jh_COk!RL4N&lt;*rD#rE}N
+</span><span>PvxSnUK**8Le1-kltSZ7azFKgf3Y*(iUtA%ba`-Pu?^n-fFP~dpvnj-AyBKaJW)+{-ce}5$#DguerIN2
+</span><span>24rbxWpi{YTdJ&amp;3iT??W6$?l#{@A?G8j--)v|TbGZq;_HaqHbhw}2&amp;v0mUY=J6lL$MhcKn;XgI|zJmp*
+</span><span>01;Q@0XT&gt;R0ssVVZ*FDSKfd5E4dt|K_z&amp;S8_x&lt;o;$Bma=F|FzDqP#$vGoEY#1aog~Wy=4LuCs~&amp;piVX+
+</span><span>Q;&amp;{e*II?7Wy=Z&lt;NW)n^eyVI=$4I^-7b@t4MVjY&gt;G@u4Q3HlB(d+LiLJm-R=h;`?dxC37Wb8ul}WgrA)
+</span><span>cw=lK261(7bY*iQ1ZZJ%Xd?z&gt;Z)|K~awG?EWpZO&gt;ZgeFHVQp|_a&amp;uvBWF`t&gt;aBp*Ta&amp;K^GWhV$?a$#d@
+</span><span>Wpqp^2x4+!V{2t}QYi&gt;wb97~LX&gt;)5T1aNG1b1Ma7Z*6U1ECp?8Zgq1l17vS&gt;E(LRJVRL9N1bSt1Z!iOI
+</span><span>Ze=k8ba!tu1$1a~Wo0u2W^Z+JGz4a8c4ajKb7^=s1#@L~Wo|bGWoc(&lt;bT|ZVX&gt;MgX1!He)Z*DpXb7gI5
+</span><span>LvL(vZaV~QWpi^p1!Zw{VQf7IXL4m&gt;bY*fr2yt~~b98BMZa)HHbU*@MK|umvLP7#xLqh^zL_`8#MMVN%
+</span><span>Mn(c(M@Ir*NJs)-Nl5}&lt;N=gD&gt;OG^S@OiTh_O-%w{PEG&lt;}Pfr40P*4J2QBeY4Qc?n6Q&amp;R$8R8#_ARaF9C
+</span><span>R#pOES62dGSXcsISy=*KT3QNoaYAxoV{2t}Oj`+JVPk7kY+-X~Tnck&gt;LULhaYh`p&amp;T?J!da%FU025fI+
+</span><span>VRL9-2x4JlYjkO2YhVFkVF6-d0b^qUWMlzlWdUYp0cU3cXlMaxX#r|#0c&amp;dkY-|B-Z2@j&gt;0dH&gt;saBu-}
+</span><span>aRG920dsQ!baVlAbpdvE0e5!+cz6MMc&gt;#KQ31dQXVPk7$bWD2$aA|O5d&lt;kPha$#d@Wpq+~1$1d_WMzI&lt;
+</span><span>4VL$$c_gyK-vkb1V&gt;yr3U)7OiEGa`mzoq#(6;V_O`&gt;9xR8a*&gt;q2D50xZ(4$R31H0PIsUw_;fcDKIn~;D
+</span><span>0000000000|Nj6000000TX!suv0v9m0LPL+_79KRH|I99{YEOV7tT#ZPWpkW1p!`O$dXTU&amp;2q#dT$Zax
+</span><span>d1hGe8*-eZ2I646q$?$f9S&gt;WJ$5c2n1xg(vzLX+s=TnOlIwpu5x&lt;(TMczEDkZ1)BN1axJ1bQsH&amp;ZxWNw
+</span><span>7!I9y+{RnQn@2DI{;m7&lt;jj@=_gDCb(0R?SkWNBgGhp04`Gl!Y4#EOy;XgWfDE7LwMr|Y&lt;=xPa&lt;PwCjOf
+</span><span>p-EU&gt;&lt;uvY*v*VyJx9`-=x0=4G6)zAUH(9jDAr2n^2welj7mcZoem^?%L*to!bRZoO^d~aUzM`;8jz95V
+</span><span>A_Ef(X&gt;Md`c4&gt;2IVr*pq1Y~7nX#oXeWo~q70tIbpY;0)*31nqsX-#QtY-t1vV`Xl1X-#QtY-t4rZE0h2
+</span><span>Zw3iuWn*bgX=8G42MS|lZggo)X=8G42n23nZf^+)WMyM%PGN3u3JGInZggo*VQy~=1aN6%Zwv@zWn*bj
+</span><span>X=85&lt;31ek$bZJm&amp;V{Z-xW@T-3Zx0D%Wn*bZWo&gt;kC5DH^uZggozWo&gt;kC5d&gt;j$bZ-(~UdWP9bIo$ZB3zcM
+</span><span>M|oyg?;CQQqXyz&amp;yre57i5(9G0)iue^mXv&lt;w6)w(d6C|8kgcNIvvn*?253&gt;L0b&gt;G|!V30Z)+K@7h0D=S
+</span><span>BjVedlDqGVd368bwG2#j+mD9lQD0sr&lt;;4X&amp;8%0D&gt;TgISeJ)kNFk^3&lt;bZE&gt;Xf*%skbRRcZ*dS!BNFavLH
+</span><span>WibPEcW*KUbZByAWite3Z*_7s1ZHV=Wi&lt;nHX?QjTb7gjAZZ`#GX=iA3I0SBKZe=+FUqL|vUqV6xUqeFz
+</span><span>UqnO#UqwX%Uq(g(Uq?p*Ur0y-Ur9*&lt;UrI^&gt;UrS2@UrbB_UrkK{UrtT}Ur$d0Ur&lt;m2Ur|v4Us6&amp;6UsF&gt;8
+</span><span>UsO~AUsY8CUshHEUsqQGUszZIUs+iKUs_rLVPOGcVgX}g0c2zWWn}?oW&amp;vks0cdCeX=wp!Y5{9&amp;0c&gt;mm
+</span><span>ZEXQ=ZUJv^0dQ~uad821ashL50d#Z$b#(!Db^&amp;*H0eE-;d3gbPdSj|16zH)&gt;$g+grvznd|(VVK)`s##^
+</span><span>Jh_COk!RL4N(lR@SaKRYGgJn%Xv1$&gt;f_VvG%;GuzyszPjx|liD+IRr~000000093000000004kq#k^Az
+</span><span>$U%@qU7&gt;2Bz={du0O&amp;G0&amp;#r1CLJBFZ06hf(#5#SRxw8U!bIFfg*5RxK^~=*jK)}Ad3J&lt;sl6abXef+K+R
+</span><span>b@1)9wcJs8k=}EVt)knrbu3H&lt;Xi=&amp;GV*-}K12h6(K|umvLP7#xLqh^zL_`8#MMVN%Mn(c(M@Ir*NJs)-
+</span><span>Nl5}&lt;N=gD&gt;OG^S@OiTh_O-%w{PEG&lt;}Pfr40P*4J2QBeY4Qc?n6Q&amp;R$8R8#_ARaF9CR#pOES62dGSXcsI
+</span><span>Sy=*KT3P{NVF6-d0b^qUWMlzlWdUYp0cU3cXlMaxX#r|#0c&amp;dkY-|B-Z2@j&gt;0dH&gt;saBu-}aRG920dsQ!
+</span><span>baVlAbpdvE0e5!+cz6MMc&gt;#KQh&gt;TceV&gt;&lt;CWmAB0rjf(Qx!Q2!JmvT|r)Y|jMQ5=qh1p!&gt;4NmyOwH13hJ
+</span><span>&lt;Df9N@6^q=n!c$OFAyI$S+vI?4j-^^(~tJj3|i&amp;b2NlXOR2^DUyWY#wQk^*F-L`Td36}){9I$nc6v6&lt;E
+</span><span>4*-nj($pTF88_k051ACjntmza&amp;U&gt;J{u?^n-fFP~dpvnj-AyBKaJW)+{-ce}5$#DguerIN21_K0id2nSM
+</span><span>uyu|U!T^j90F36+)E=H0H{s0&gt;nH0sEektM3d!V}qb9G{Ld2nSf*z$T8ClZi8YCe|m_*?{lv&gt;_T7tkE!8
+</span><span>{87}TyWT7ZV`yP=b7gcd*z$T8ClZi8YCe|m_*?{lv&gt;_T7tkE!8{87}TyWT9nkIU)BIae{Jw9R4r0N&gt;}O
+</span><span>)+shqImKG);D@8R3aUm3Jkg?^%&amp;nV|dnPbniKwLeAs8?!PIJYq3V03Xs{mee0000000000KL7v#00000
+</span><span>#5#SRxw8U!bIFfg*5RxK^~=*jK)}Ad3J&lt;sl6abXe1p-LEBNr;@ghiU?gEXK9KMDE{F?;HZBRuDVqlk6q
+</span><span>mbmq;7a&gt;H&lt;(%oY0=TGqa6l5KfYJkC@$v(fAa&amp;d%-e7ws4kFK+d0H97bAybczVb@xPq-Dzr4oJgUK7Oif
+</span><span>U&amp;jRjKPz&amp;##IG7-47St%2#c&gt;Z5R&gt;jkTb_MKDq#SE&lt;Vn}$%))Y#k9jx)*&amp;ki4jZw^)YeO&lt;P50WJJ$H7re
+</span><span>c8&lt;G{1p@gO2n5}(1bO(?uXL+B(gNn{L2}utxi&lt;$D8ry%w457b|%jv~AS23ov&amp;0+fh-{+;)DK=9%#aim%
+</span><span>hoiX)sz%rRzT+P7s9j%|JK7ryjGlh`%f(kEcQ`Dp)4jAIiU9@$26Sm-Yh`j&lt;cPx&amp;vU)M(f$C5$z50Bb6
+</span><span>=QgwbMk=ru&amp;P_#5`hlthZeeX@fL_JCQxeEQkVIXfYN5c23F83hGCI$$Y9m4lDXjoK2V`Y*VQFl0MYn(@
+</span><span>h5^MUvO8NyVMYp&amp;P~kr{`@Vw(r~naH&lt;N-K{32&lt;^{V`+0~Z*E-!#21aJj($Hn^F!mAeRLol5%ecA&amp;%UCt
+</span><span>OO8MBUn1B)zThtn&lt;+N=058)p7{qSMOjh9_9t?BNfyg-&gt;Vo@@XB+#WAdR)2C|*D$SwhJOvD$-0{Gfin@`
+</span><span>&lt;nKN_N?|2P1pz~&lt;f5rCoWKZRyu3j3ckV4Jthm=C&amp;OmaW&lt;f`73y-iqLds5F){hncU$ijom%IzoLb(&gt;^Yz
+</span><span>&gt;$s@6fa*%L&gt;wyFU00eGtZe`d%zThtn&lt;+N=058)p7{qSMOjh9_9t?BNfyg-&gt;Vo@@aGb8l^B+#WAdR)2C|
+</span><span>*D$SwhJOvD$-0{Gfin@`&lt;nKN_N?|2P^{p2nM9k9NV(jNn@cR^G9g}K+!Jx@Lzn5}xgo%8-2uQvo7b@t4
+</span><span>MVjY&gt;G@u4Q3HlB(d+LiLJm-R=h;`?dxBvhE0000004D$d000000QnaP1l_I#dHB_@bgMhk0_N&amp;La@nc5
+</span><span>HwP6O+keCip#vHLVPOGcVgX}g0c2zWWn}?oW&amp;vks0cdCeX=wp!Y5{9&amp;0c&gt;mmZEXQ=ZUJv^0dQ~uad821
+</span><span>ashL50d#Z$b#(!Db^&amp;*H0eE-;d3gbPdi$wZavD7|R0gwX!*5!Gc?n?5;yM1jui=Thm^szjcmV+b0|P-!
+</span><span>RR}^*L`g?QQ&amp;a;|M?xV03jhEB(4Y?i2MYiJ01F5J01E*E0La=00XZ-L(V!0j2Lu2B0RR910000
+</span><span>
+</span><span>-----END RGB CONSIGNMENT-----
+</span></code></pre>
+<p>You can also add a filename as a second argument, and the contract will be
+saved into this file in binary form.</p>
+
+            </div>
+        </section>
+    
+</main>
+
+<footer><div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
+  <div class="flex flex-column flex-row-ns pv0-l">
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Get help!</h4>
+      <ul>
+        <li><a href="http://rgbfaq.com">RGB FAQ</a></li>
+        <li><a href="https://blackpaper.rgb.tech">White paper</a></li>
+        <li><a href="/docs">Documentation</a></li>
+        <li><a href="https://standards.lnp-bp.org">Standards</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Terms and policies</h4>
+      <ul>
+        <li><a href="/policies/licenses">Licenses</a></li>
+        <li><a href="/policies/logo-policy-and-media-guide/">Logo Policy and Media Guide</a></li>
+        <li><a href="/policies/security">Security Disclosures</a></li>
+        <li><a href="/policies/privacy-policy/">Privacy Notice</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-column mw8 w-100 measure-wide-l pv2 pv5-m pv2-ns ph4-m ph4-l">
+      <h4>Social</h4>
+      <div class="flex flex-row flex-wrap">
+        <a href="https://twitter.com/lnp_bp"><img src="/social/twitter.svg" alt="twitter logo" title="Twitter"></a>
+        <a href="https://www.youtube.com/LNP-BP"><img class="pv2" src="/social/youtube.svg" alt="youtube logo" title="YouTube"></a>
+        <a href="https://reddit.com/r/RGB_protocol"><img src="/social/reddit.svg" alt="discord logo" title="Discord"></a>
+        <a href="https://github.com/RGB-WG"><img src="/social/github.svg" alt="github logo" title="GitHub"></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="attribution">
+    <p>
+      Maintained by the <a href="https://www.lnp-bp.org">LNP/BP Standards Association</a>. See a bug?
+      <a href="https://github.com/RGB-WG/rgb.tech/issues/new">File an issue!</a>
+    </p>
+    <p>Uses layout &amp; styles from <a href="https://github.com/rust-lang/www.rust-lang.org" target="_blank">Rust Language website</a></p>
+  </div>
+</div>
+
+</footer>
+</body>
+
+</html>
